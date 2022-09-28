@@ -6,6 +6,8 @@ public class HandPhysics : MonoBehaviour
 {
     public Transform target;
     private Rigidbody rb;
+    public Renderer nonPhysicalhand;
+    public float shownonPhysicalhandDistance = 0.05f;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class HandPhysics : MonoBehaviour
 
         Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
 
+        //Get velocity of rotationdifference by dividing it by Time.deltatime
         rb.angularVelocity = rotationDifferenceInDegree * Mathf.Deg2Rad / Time.deltaTime;
     }
 }
