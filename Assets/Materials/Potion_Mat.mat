@@ -51,8 +51,8 @@ Material:
     - _QueueOffset: 0
     - _WobbleX: 0
     - _WobbleZ: 0
-    - _fillAmount: 0.594
+    - _fillAmount: 0.546
     m_Colors:
     - _SideColor: {r: 0, g: 1.39772, b: 0.087814875, a: 1}
-    - _TopColor: {r: 0, g: 6.498019, b: 0.40771887, a: 1}
+    - _TopColor: {r: 0, g: 5.091748, b: 0.24837798, a: 1}
   m_BuildTextureStacks: []
