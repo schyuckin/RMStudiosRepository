@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Potion_Mat 1
+  m_Name: Potion_Mat 3
   m_Shader: {fileID: -6465566751694194690, guid: b1521fe03e06da54eb0367eb8c6d54cf, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -47,16 +47,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FresnelPower: 1.23
+    - _FresnelPower: 93.71
     - _QueueControl: 0
     - _QueueOffset: 0
     - _TopFresnelPower: 0.5
     - _WobbleX: 0
     - _WobbleZ: 0
-    - _fillAmount: 0.563
+    - _fillAmount: 0.551
     m_Colors:
-    - _FresnelColor: {r: 2.9960785, g: 0, b: 2.9960785, a: 0}
-    - _SideColor: {r: 1.5435753, g: 0, b: 1.1314168, a: 1}
-    - _TopColor: {r: 9.849155, g: 0.7724828, b: 7.261338, a: 1}
-    - _TopFresnelColor: {r: 0.038024556, g: 0, b: 0.038024556, a: 0}
+    - _FresnelColor: {r: 0.00013786765, g: 0.0007314645, b: 0.00025275737, a: 0}
+    - _SideColor: {r: 0, g: 0.56334066, b: 0.03834253, a: 1}
+    - _TopColor: {r: 0, g: 2.433572, b: 0.12741214, a: 1}
+    - _TopFresnelColor: {r: 0, g: 0.0007314645, b: 0.00006127451, a: 0}
   m_BuildTextureStacks: []

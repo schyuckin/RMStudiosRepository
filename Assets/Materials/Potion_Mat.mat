@@ -47,12 +47,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _FresnelPower: 1.48
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _TopFresnelPower: 0.5
     - _WobbleX: 0
     - _WobbleZ: 0
     - _fillAmount: 0.551
     m_Colors:
-    - _SideColor: {r: 0, g: 0.56334066, b: 0.03834253, a: 1}
-    - _TopColor: {r: 0, g: 5.091748, b: 0.24837798, a: 1}
+    - _FresnelColor: {r: 0.52688926, g: 2.79544, b: 0.9659636, a: 0}
+    - _SideColor: {r: 0.054800764, g: 1.0561602, b: 0.12819886, a: 1}
+    - _TopColor: {r: 0.2216981, g: 1, b: 0.27988893, a: 1}
+    - _TopFresnelColor: {r: 0, g: 0.56765074, b: 0.05052389, a: 0}
   m_BuildTextureStacks: []
