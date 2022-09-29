@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Potion_Mat 1
+  m_Name: Potion_Mat 2
   m_Shader: {fileID: -6465566751694194690, guid: b1521fe03e06da54eb0367eb8c6d54cf, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -53,6 +53,6 @@ Material:
     - _WobbleZ: 0
     - _fillAmount: 0.563
     m_Colors:
-    - _SideColor: {r: 3.0588236, g: 0, b: 2.2117648, a: 1}
-    - _TopColor: {r: 9.849155, g: 0.7724828, b: 7.261338, a: 1}
+    - _SideColor: {r: 0, g: 2.709649, b: 4.0119615, a: 1}
+    - _TopColor: {r: 0, g: 9.672986, b: 13.149394, a: 1}
   m_BuildTextureStacks: []
