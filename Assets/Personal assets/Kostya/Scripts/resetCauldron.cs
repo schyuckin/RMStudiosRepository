@@ -14,7 +14,7 @@ public class resetCauldron : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // This triggers a function within Cauldron Controller that refreshes all of the ingredients on the list
         resettingCauldron.SetActive(false);

@@ -13,7 +13,7 @@ public class resetPotion : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter (Collider other)
     {
         // Bad code, duplicate of what I already had in the recipe generator
         // I think there is a better way to do this by having this script be triggered from the recipe generator

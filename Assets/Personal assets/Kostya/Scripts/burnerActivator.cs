@@ -6,7 +6,7 @@ public class burnerActivator : MonoBehaviour
 {
     public GameObject chemicalBurner;
     // Start is called before the first frame update
-    private void OnMouseDown()
+    private void OnTriggerEnter(Collider other)
     {
         var activate = chemicalBurner.GetComponent<burnerState>();
         if (!activate.isActivated)

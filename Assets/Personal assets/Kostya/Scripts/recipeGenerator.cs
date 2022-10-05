@@ -29,11 +29,11 @@ public class recipeGenerator : MonoBehaviour
         recipeTemperature = (int)Random.Range(30, 61); // Chooses the temperature
         enchantmentType = (int)Random.Range(1, 4); // Chooses the enchantment
         // Displays the changes on UI
-        uiPrompts[0].GetComponent<TextMeshProUGUI>().text = chosenRecipeName;
+        uiPrompts[0].GetComponent<TextMeshPro>().text = chosenRecipeName;
         var chooseTemp = recipeTemperature.ToString();
-        uiPrompts[1].GetComponent<TextMeshProUGUI>().text = chooseTemp;
+        uiPrompts[1].GetComponent<TextMeshPro>().text = chooseTemp;
         var chooseEnch = enchantmentType.ToString();
-        uiPrompts[2].GetComponent<TextMeshProUGUI>().text = chooseEnch;
+        uiPrompts[2].GetComponent<TextMeshPro>().text = chooseEnch;
     }
 
     void PotionReset()
