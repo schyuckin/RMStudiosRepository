@@ -7,6 +7,7 @@ public class Handtrackingphysics : MonoBehaviour
     private Rigidbody rb;
     private Collider[] handCollider;
     private IEnumerator coroutine;
+    public float delayroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class Handtrackingphysics : MonoBehaviour
         handCollider = GetComponentsInChildren<Collider>();
 
         //Delay of coroutine is set to 0.03f
-        coroutine = WaitforCollisionReturn(0.03f);
+        coroutine = WaitforCollisionReturn(delayroutine);
     }
 
 
