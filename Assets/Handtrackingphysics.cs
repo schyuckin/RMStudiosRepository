@@ -6,46 +6,52 @@ public class Handtrackingphysics : MonoBehaviour
 {
     private Rigidbody rb;
     private Collider[] handCollider;
+    private IEnumerator coroutine;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Get rigidbody and collider in all children of the gameobject attached
         rb = GetComponent<Rigidbody>();
 
         handCollider = GetComponentsInChildren<Collider>();
+
+        //Delay of coroutine is set to 0.03f
+        coroutine = WaitforCollisionReturn(0.03f);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        foreach (var item in handCollider)
-        {
-            
-            item.enabled = true;
-        }
-        foreach (var item in handCollider)
-        {
-            item.enabled = false;
-        }
-    }
 
-    public void EnableHandCollider()
+    private void OnCollisionEnter(Collision collision)
     {
-        foreach (var item in handCollider)
+        //If a gameobject collides to attached gameobject,collision will be disabled
+        if (collision.gameObject)
         {
-            item.enabled = true;
+            foreach(var item in handCollider)
+            {
+                item.enabled = false;
+            }
+        }
+        //If collision is not detected return collision
+        else
+        {
+            StartCoroutine(coroutine);
         }
     }
     public void DisableHandCollider()
     {
         foreach (var item in handCollider)
         {
-            item.enabled = false;
+            item.enabled = true;
         }
     }
-
     public void EnabelHandColliderDelay(float delay)
     {
         Invoke("EnableHandCollider", delay);
+    }
+    
+    private IEnumerator WaitforCollisionReturn(float delay)
+    {
+        Invoke("EnableHandCollider", delay);
+        yield return WaitforCollisionReturn(delay);
     }
 }
