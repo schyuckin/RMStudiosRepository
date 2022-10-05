@@ -1620,8 +1620,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.029192822, y: 0.028731426, z: 0.041182186}
-  m_Center: {x: 0.000009595881, y: -9.313224e-10, z: -0.010615329}
+  m_Size: {x: 0.027750274, y: 0.02384615, z: 0.012753183}
+  m_Center: {x: 0.00073086953, y: 0.0006645808, z: 0.0022060624}
 --- !u!4 &918509339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4aa2f15973f42d848b2cc43ff5899005, type: 3}
@@ -1685,6 +1685,19 @@ MonoBehaviour:
   _movementProvider: {fileID: 0}
   _handAligment: 1
   _handGrabPoses: []
+--- !u!65 &918509342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918509334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009841448, y: 0.005943827, z: 0.024401072}
+  m_Center: {x: 0.0010578125, y: 0.0029379032, z: -0.017816445}
 --- !u!1 &1008095585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 341548596588327258, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
