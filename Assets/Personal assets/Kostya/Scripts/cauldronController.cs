@@ -47,9 +47,12 @@ public class cauldronController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "baseElement" && other.tag != "Player" && other.tag != "flask")
+        if (other.tag != "baseElement" && other.tag != "Player" && other.tag != "flask" && other.tag != "handElement")
         {
-            ingredientAmount++;
+            if (other.tag != "handElement")
+            {
+                ingredientAmount++;
+            }
             waterBody.GetComponent<waterState>().enabled = true;
             var chemicals = waterBody.GetComponent<waterState>();
             chemicals.ingredientControl = 3;

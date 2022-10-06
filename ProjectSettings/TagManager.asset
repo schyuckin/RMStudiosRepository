@@ -8,6 +8,7 @@ TagManager:
   - flask
   - enchantmentElement
   - baseElement
+  - handElement
   layers:
   - Default
   - TransparentFX
