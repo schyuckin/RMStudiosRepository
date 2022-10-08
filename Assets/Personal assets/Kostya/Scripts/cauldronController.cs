@@ -47,16 +47,20 @@ public class cauldronController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "baseElement" && other.tag != "Player" && other.tag != "flask" && other.tag != "handElement")
-        {
-            if (other.tag != "handElement")
-            {
-                ingredientAmount++;
-            }
-            waterBody.GetComponent<waterState>().enabled = true;
-            var chemicals = waterBody.GetComponent<waterState>();
-            chemicals.ingredientControl = 3;
-        }
+        // COMMENTED THIS TO FIX THAT WEIRD BUG WHERE ANYTHING BESIDES BASE ELEMENT WOULD CAUSE THE CAULDRON TO TURN BLACK
+        // THE CODE STILL NEEDS THE OPTIONAL CONDITIONS TO MAKE SURE THAT THE PLAYER CANNOT JUST DROP STUFF IN THE CAULDRON
+
+
+        //if (other.tag != "baseElement" && other.tag != "Player" && other.tag != "flask" && other.tag != "handElement")
+        //{
+        //    if (other.tag != "handElement")
+        //    {
+        //        ingredientAmount++;
+        //    }
+        //    waterBody.GetComponent<waterState>().enabled = true;
+        //    var chemicals = waterBody.GetComponent<waterState>();
+        //    chemicals.ingredientControl = 3;
+        //}
         // Essentially means that all of the other crap wont matter if it falls into the cauldron
         // Mostly done to prevent collision with the player, also has some constraints in terms of current code
         if (other.tag == "baseElement")

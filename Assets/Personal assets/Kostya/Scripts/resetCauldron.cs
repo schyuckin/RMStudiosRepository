@@ -6,6 +6,7 @@ public class resetCauldron : MonoBehaviour
 {
     public GameObject resettingCauldron;
     public GameObject waterColouring;
+    public GameObject burner;
     public Material neutralWater;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class resetCauldron : MonoBehaviour
         // At least I think so, some of it is probably redundant but I'm afraid to touch it
         var controllerReset = resettingCauldron.GetComponent<cauldronController>();
         controllerReset.ingredientAmount = 0;
+        var burnerPot = burner.GetComponent<burnerState>();
+        burnerPot.burnerPotency = 0;
         var ingredientChange = waterColouring.GetComponent<waterState>();
         ingredientChange.ingredientControl = 0;
         var colourChange = waterColouring.GetComponent<waterState>();
