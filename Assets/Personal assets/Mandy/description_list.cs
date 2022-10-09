@@ -28,23 +28,57 @@ public class description_list : MonoBehaviour
             //The higher the potency the stronger are the effects
             // Both the potion base and its sigil depend on the type of potion
 
-            // Romantic potion, base ?, potency 1, sigil ?
+            //"I wish she liked me back"[Potency 1]
+//Colour: Magenta
+//Red + Blue = Magenta
+//Blue mushroom +Spider Eye
+//Heat: 25 degrees
+//Psyche: Mind
+
             case 0:
                 potionPotency = 1;
                 break;
-            // Romantic potion, base ?, potency 2, sigil ?
+
+                //"My arm got blasted off in battle"[Potency 2]
+//Colour: Green
+//Blue + Yellow = Green
+//Blue mushroom +Concentrated stardust
+//Heat: 78 degrees
+//Psyche: Body
+
             case 1:
                 potionPotency = 2;
                 break;
-            // Romantic potion, base ?, potency 3, sigil ?
+
+                //"I want them to worship me"[Potency 3]
+//Colour: (dark)purple
+//Red + Blue = Magenta
+//Blue mushroom +Spider Eye
+//Heat: 96 degrees
+//Psyche: Mind
+
             case 2:
                 potionPotency = 3;
                 break;
-            // Soothing potion, base ?, potency 2, sigil ?
+
+                //"My neighbor is so loud, I wish he could be quiet for once"[Potency 2]
+//Colour: Orange
+//Red + Yellow = Orange
+//Spider eye +Concentrated stardust
+//Heat: 65 degrees
+//Psyche: Body
+
             case 3:
                 potionPotency = 2;
                 break;
-            // Soothing potion, base ?, potency 3, sigil ?
+
+                //"I want them gone..."[Potency 3]
+//Colour: (Dark)green
+//Yellow + Blue
+//Concentrated stardust +Blue mushroom
+//Heat: 99 degrees
+//Psyche: Body
+
             case 4:
                 potionPotency = 3;
                 break;

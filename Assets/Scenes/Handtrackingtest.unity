@@ -1443,8 +1443,9 @@ MonoBehaviour:
   - '"I wish she liked me back" [Potency 1]'
   - '"I want this wizard to fall desperately in love with me" [Potency 2]'
   - '"I want them to worship me" [Potency 3]'
-  - '"My neighbour is so loud, I wish he could be quiet for once" [Potency 2]'
+  - '"My neighbor is so loud, I wish he could be quiet for once" [Potency 2]'
   - '"I want them gone..." [Potency 3]'
+  potionBase: 0
   potionPotency: 0
   potionSigil: 0
   descriptionChosen: 0
