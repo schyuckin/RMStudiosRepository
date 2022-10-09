@@ -16,12 +16,14 @@ public class HandPhysics : MonoBehaviour
         //get the rigidbody of attached object
         rb = GetComponent<Rigidbody>();
 
+        //Handcollider is all the colliders in the children of the hand
         handCollider = GetComponentsInChildren<Collider>();
             
             }
 
     public void EnableHandCollider()
     {
+        //If an item is out of the hand, enable collider
         foreach(var item in handCollider)
         {
             item.enabled = true;
@@ -30,6 +32,7 @@ public class HandPhysics : MonoBehaviour
 
     public void DisableHandCollider()
     {
+        //if an item is in the hand collider, disable collider
         foreach (var item in handCollider)
         {
             item.enabled = false;
@@ -38,6 +41,8 @@ public class HandPhysics : MonoBehaviour
 
     public void EnabelHandColliderDelay(float delay)
     {
+        //Delay between enabling the collider to prevent pushing
+        //The delay time can be regulated in the inspector
         Invoke("EnableHandCollider", delay);
     }
 
