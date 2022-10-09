@@ -12,6 +12,24 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private GameObject teleporter;
     // [SerializeField] private GameObject wrongIngredients;
     // Start is called before the first frame update
+    
+    
+    [Space]
+    //Peter Stuff
+    public description_list _descriptionList;
+    public flaskState _flaskState;
+
+    private int requiredBase;
+    private int requiredPot;
+    private int requiredSigil;
+    
+    private int baseCol;
+    private int pot;
+    private int sigil;
+
+    private string potionName;
+
+    private string reviewSentence;
     void Start()
     {
         RecipeChoice();
@@ -23,6 +41,9 @@ public class recipeChecker : MonoBehaviour
     {
         // This is where it has to check the recipe chosen by the randomizer
         this.GetComponent<description_list>();
+        requiredBase = _descriptionList.potionBase;
+        requiredPot = _descriptionList.potionPotency;
+        requiredSigil = _descriptionList.potionSigil;
     }
 
     void PotionReset()
@@ -39,10 +60,39 @@ public class recipeChecker : MonoBehaviour
         {
             // !!!!!!!!!!!!!
             // PETERS SCRIPT SHOULD COME IN HERE PROBABLY, EITHER BY ENABLING ANOTHER OBJECT OR OUTRIGHT HAVING IT WITHIN THIS CODE
-            // YOU HAVE TO CHECK WHAT IS IN THE DESCRIPTION LIST SCRIPT (MANDY'S FOLDER) AND FLASK STATE SCRIPT (KOSTYA'S FOLDER)   
+            // YOU HAVE TO CHECK WHAT IS IN THE DESCRIPTION LIST SCRIPT (MANDY'S FOLDER) AND FLASK STATE SCRIPT (KOSTYA'S FOLDER)  
+
+            GetPotionAttributes(other.gameObject);
 
 
+            if (requiredBase == baseCol && requiredPot == pot &&  requiredSigil == sigil)
+            {
+                FiveStarReview();
+            }
+            if (requiredBase == baseCol && requiredPot == pot &&  requiredSigil != sigil)
+            {
+                FourStarReview();
+            }
+            if (requiredBase == baseCol && requiredPot < pot)
+            {
+                TwoStarReview1();
+            }
+            if (requiredBase == baseCol && requiredPot > pot)
+            {
+                TwoStarReview2();
+            }
+            if (requiredBase != baseCol)
+            {
+                reviewSentence = "The potion was completely wrong";
+            }
+            
 
+
+            #region oldCode
+
+            
+
+            
             // Checks for all conditions
             //if (flaskChem.flaskBase == recipeState)
             //{
@@ -64,6 +114,65 @@ public class recipeChecker : MonoBehaviour
             //{
             //    wrongIngredients.SetActive(true);
             //}
+            #endregion
+        }
+    }
+
+    void GetPotionAttributes(GameObject potion)
+    {
+       _flaskState = potion.GetComponent<flaskState>();
+        baseCol = _flaskState.flaskBase;
+        pot = _flaskState.flaskPotency;
+        sigil = _flaskState.sigilType;
+    }
+
+    void FiveStarReview()
+    {
+        if (potionName == "LovePotion")
+        {
+            reviewSentence = "The Potion was perfect, he is head over heels for me, we already planned our wedding for next week";
+        }
+
+        if (potionName == "SleepPotion")
+        {
+            reviewSentence = "The potion was perfect, whenever my neighbor is being loud I just gift him some tea and enjoy the rest of the day!";
+        }
+    }
+    void FourStarReview()
+    {
+        if (potionName == "LovePotion")
+        {
+            reviewSentence = "The potion was almost perfect, he has fallen in love for me, however, his head caught on fire, I wanted a spark between us but that's not what I meant";
+        }
+
+        if (potionName == "SleepPotion")
+        {
+            reviewSentence = "The potion was almost perfect, my neighbor is asleep, however he snores so much he causes small earthquakes in the building";
+        }
+    }
+    void TwoStarReview1()
+    {
+        if (potionName == "LovePotion")
+        {
+            reviewSentence = "I wanted him to love me, however this potion made him extremely obsessed with me! He doesnt leave the house and says he likes to watch me sleep!";
+        }
+
+        if (potionName == "SleepPotion")
+        {
+            reviewSentence = "When I said I wanted my neighbor to be quiet, I expected a potion to make him unable to talk or unconscious! Not to kill him immediately! I am facing 5-to-10 for first degree murder.";
+        }
+    }
+    
+    void TwoStarReview2()
+    {
+        if (potionName == "LovePotion")
+        {
+            reviewSentence = "I wanted him to love me, but he seems like he just wants to be my friend! He keeps inviting me to watch sports and play cards with him!";
+        }
+
+        if (potionName == "SleepPotion")
+        {
+            reviewSentence = "I wanted my neighbor to be quiet but this potion just made him act really tired and weird, he's not much more quiet he just slurs his words and barely opens his eyes now";
         }
     }
 }
