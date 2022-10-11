@@ -529,7 +529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resettingCauldron: {fileID: 1208669202}
   waterColouring: {fileID: 6572683484656309469}
-  burner: {fileID: 0}
+  burner: {fileID: 919132149095913405}
   neutralWater: {fileID: 2100000, guid: 79c8962072b280747af390e0fba6263f, type: 2}
 --- !u!1 &121083069
 GameObject:
@@ -96842,8 +96842,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8bf066d94d773fa458da8e66b8abfea2, type: 2}
   - {fileID: 2100000, guid: 5b9a4cc70dda87242b411a7f1f042590, type: 2}
   - {fileID: 2100000, guid: b1e0b90477244d94c92616ab61a40e7b, type: 2}
-  - {fileID: 2100000, guid: ed4e0e45a79990c4cad549e7ecf26f7e, type: 2}
   - {fileID: 2100000, guid: 0e5ddcdcac01daf48be9e6bfdba8efaa, type: 2}
+  - {fileID: 2100000, guid: ed4e0e45a79990c4cad549e7ecf26f7e, type: 2}
   - {fileID: 2100000, guid: 8cdd2a1d89108154d973c706e017c19a, type: 2}
   - {fileID: 2100000, guid: 7e5ed9215573a1d4cb62c252608b5c3b, type: 2}
   - {fileID: 2100000, guid: 524e388bb9604674883a4ea0f6ca08c1, type: 2}
