@@ -38,9 +38,10 @@ public class description_list : MonoBehaviour
             case 0:
                 potionBase = 7;
                 potionPotency = 1;
+                potionSigil = 1;
                 break;
 
-                //"My arm got blasted off in battle"[Potency 2]
+                //"I want them to be desperately in love with me"[Potency 2]
 //Colour: Green
 //Blue + Yellow = Green
 //Blue mushroom +Concentrated stardust
@@ -48,7 +49,7 @@ public class description_list : MonoBehaviour
 //Psyche: Body
 
             case 1:
-                potionBase = 9;
+                potionBase = 7;
                 potionPotency = 2;
                 break;
 
@@ -62,6 +63,7 @@ public class description_list : MonoBehaviour
             case 2:
                 potionBase = 7;
                 potionPotency = 3;
+                potionSigil = 1;
                 break;
 
                 //"My neighbor is so loud, I wish he could be quiet for once"[Potency 2]
@@ -74,6 +76,7 @@ public class description_list : MonoBehaviour
             case 3:
                 potionBase = 8;
                 potionPotency = 2;
+                potionSigil = 2;
                 break;
 
                 //"I want them gone..."[Potency 3]
@@ -86,6 +89,7 @@ public class description_list : MonoBehaviour
             case 4:
                 potionBase = 9;
                 potionPotency = 3;
+                potionSigil = 2;
                 break;
         }
     }

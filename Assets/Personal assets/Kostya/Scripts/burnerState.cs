@@ -12,6 +12,7 @@ public class burnerState : MonoBehaviour
     [SerializeField] private GameObject burnerDisplay; // Shows the temperature
     // [SerializeField] private Material[] burnerMoods = new Material[3]; // Just a fancier name to describe the visuals I suppose
     public GameObject potionFlask;
+    public bool potencySet = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,17 +32,21 @@ public class burnerState : MonoBehaviour
                 burnerTemperature += Time.deltaTime * 5;
                 burnerTemp = (int)burnerTemperature;
             }
-            if (burnerTemperature >= 20)
+            if (!potencySet)
             {
-                burnerPotency = 1;
-            }
-            if (burnerTemperature > 45)
-            {
-                burnerPotency = 2;
-            }
-            if (burnerTemperature > 70)
-            {
-                burnerPotency = 3;
+                if (burnerTemperature >= 20)
+                {
+                    burnerPotency = 1;
+                }
+                if (burnerTemperature > 45)
+                {
+                    burnerPotency = 2;
+                }
+                if (burnerTemperature > 70)
+                {
+                    burnerPotency = 3;
+                }
+                potencySet = true;
             }
         }
         // Cooling down after a small delay
