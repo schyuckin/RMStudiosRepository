@@ -36,6 +36,7 @@ public class description_list : MonoBehaviour
 //Psyche: Mind
 
             case 0:
+                potionBase = 7;
                 potionPotency = 1;
                 break;
 
@@ -47,6 +48,7 @@ public class description_list : MonoBehaviour
 //Psyche: Body
 
             case 1:
+                potionBase = 9;
                 potionPotency = 2;
                 break;
 
@@ -58,6 +60,7 @@ public class description_list : MonoBehaviour
 //Psyche: Mind
 
             case 2:
+                potionBase = 7;
                 potionPotency = 3;
                 break;
 
@@ -69,6 +72,7 @@ public class description_list : MonoBehaviour
 //Psyche: Body
 
             case 3:
+                potionBase = 8;
                 potionPotency = 2;
                 break;
 
@@ -80,6 +84,7 @@ public class description_list : MonoBehaviour
 //Psyche: Body
 
             case 4:
+                potionBase = 9;
                 potionPotency = 3;
                 break;
         }
