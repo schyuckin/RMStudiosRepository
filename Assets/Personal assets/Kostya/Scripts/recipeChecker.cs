@@ -30,6 +30,7 @@ public class recipeChecker : MonoBehaviour
     private string potionName;
 
     private string reviewSentence;
+    public GameObject reviewDisplay;
     void Start()
     {
         RecipeChoice();
@@ -63,8 +64,17 @@ public class recipeChecker : MonoBehaviour
             // YOU HAVE TO CHECK WHAT IS IN THE DESCRIPTION LIST SCRIPT (MANDY'S FOLDER) AND FLASK STATE SCRIPT (KOSTYA'S FOLDER)  
 
             GetPotionAttributes(other.gameObject);
+            var stuff = this.GetComponent<description_list>();
+            if ((stuff.descriptionChosen == 0) || (stuff.descriptionChosen == 1) || (stuff.descriptionChosen == 2))
+            {
+                potionName = "LovePotion";
+            }
+            if ((stuff.descriptionChosen == 3) || (stuff.descriptionChosen == 4))
+            {
+                potionName = "SleepPotion";
+            }
 
-
+            reviewDisplay.SetActive(true);
             if (requiredBase == baseCol && requiredPot == pot &&  requiredSigil == sigil)
             {
                 FiveStarReview();
@@ -130,11 +140,13 @@ public class recipeChecker : MonoBehaviour
     {
         if (potionName == "LovePotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "The Potion was perfect, he is head over heels for me, we already planned our wedding for next week";
         }
 
         if (potionName == "SleepPotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "The potion was perfect, whenever my neighbor is being loud I just gift him some tea and enjoy the rest of the day!";
         }
     }
@@ -142,11 +154,13 @@ public class recipeChecker : MonoBehaviour
     {
         if (potionName == "LovePotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "The potion was almost perfect, he has fallen in love for me, however, his head caught on fire, I wanted a spark between us but that's not what I meant";
         }
 
         if (potionName == "SleepPotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "The potion was almost perfect, my neighbor is asleep, however he snores so much he causes small earthquakes in the building";
         }
     }
@@ -154,11 +168,13 @@ public class recipeChecker : MonoBehaviour
     {
         if (potionName == "LovePotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "I wanted him to love me, however this potion made him extremely obsessed with me! He doesnt leave the house and says he likes to watch me sleep!";
         }
 
         if (potionName == "SleepPotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "When I said I wanted my neighbor to be quiet, I expected a potion to make him unable to talk or unconscious! Not to kill him immediately! I am facing 5-to-10 for first degree murder.";
         }
     }
@@ -167,11 +183,13 @@ public class recipeChecker : MonoBehaviour
     {
         if (potionName == "LovePotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "I wanted him to love me, but he seems like he just wants to be my friend! He keeps inviting me to watch sports and play cards with him!";
         }
 
         if (potionName == "SleepPotion")
         {
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewSentence = "I wanted my neighbor to be quiet but this potion just made him act really tired and weird, he's not much more quiet he just slurs his words and barely opens his eyes now";
         }
     }
