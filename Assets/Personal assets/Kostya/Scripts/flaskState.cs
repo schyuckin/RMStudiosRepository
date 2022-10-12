@@ -35,11 +35,11 @@ public class flaskState : MonoBehaviour
         }
         if ((flaskBase == checkBase && flaskPotency != checkPot) || (flaskBase == checkBase && sigilType != checkSig))
         {
-
+            isCorrectOrder = false;
         }
         if (flaskPotency == checkPot && sigilType != checkSig)
         {
-
+            isCorrectOrder = false;
         }
 
     }
