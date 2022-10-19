@@ -7,19 +7,11 @@ public class resetPotion : MonoBehaviour
     [SerializeField] private GameObject flask;
     [SerializeField] private GameObject teleporter;
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
+    // Resets the state of the flask & teleports it to its original position
     private void OnTriggerEnter (Collider other)
     {
-        // Bad code, duplicate of what I already had in the recipe generator
-        // I think there is a better way to do this by having this script be triggered from the recipe generator
-        // And do not have it in its entire form in the generator itself
         flask.transform.position = teleporter.transform.position;
-        var reset = flask.GetComponent<flaskState>();
-        reset.isReset = true;
+        flask.GetComponent<flaskState>().SettingProperties();
     }
 }

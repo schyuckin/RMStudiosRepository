@@ -5,29 +5,23 @@ using TMPro;
 
 public class recipeChecker : MonoBehaviour
 {
-    [SerializeField]
-    private string[] recipeName = {"Neutral", "Reddish", "Blueish", "Yellowish", "Red", "Blue",
-        "Yellow", "Purple", "Orange", "Green", "Black"}; // Names of the recipes
+
     [SerializeField] private GameObject flask;
     [SerializeField] private GameObject teleporter;
-    // [SerializeField] private GameObject wrongIngredients;
-    // Start is called before the first frame update
-    
-    
+
     [Space]
-    //Peter Stuff
-    public flaskState _flaskState;
 
     [SerializeField] private int requiredBase;
-    [SerializeField] private int requiredPot;
+    [SerializeField] private int requiredPot; // Desired properties for the currently chosen potion recipe
     [SerializeField] private int requiredSigil;
-    
-    [SerializeField] private int baseCol;
-    [SerializeField] private int pot;
-    [SerializeField] private int sigil;
+
+    [Space]
+
+    [SerializeField] private int flaskBase;
+    [SerializeField] private int flaskPot; // De facto properties of the potion, contained within a flask
+    [SerializeField] private int flaskSigil;
 
     [SerializeField] private string potionName;
-    [SerializeField] private int flaskName;
 
     private string reviewSentence;
     public GameObject reviewDisplay;
@@ -35,173 +29,208 @@ public class recipeChecker : MonoBehaviour
     {
 
     }
-    // Currently unused
 
-    void RecipeChoice()
+    // Acquires needed recipe properties when it gets chosen
+    public void RequestedProperties()
     {
-        // This is where it has to check the recipe chosen by the randomizer
-        var getStuff = this.GetComponent<description_list>();
-        requiredBase = getStuff.potionBase;
-        requiredPot = getStuff.potionPotency;
-        requiredSigil = getStuff.potionSigil;
+        var getRequired = this.GetComponent<recipeGiver>();
+        requiredBase = getRequired.potionBase;
+        requiredPot = getRequired.potionPotency;
+        requiredSigil = getRequired.potionSigil;
     }
 
-    void PotionReset()
+    // Acquires actual potion properties when it gets submitted
+    void DeFactoProperties()
     {
-        // Resets the potion to default position and attributes
-        flask.transform.position = teleporter.transform.position;
-        var resetting = flask.GetComponent<flaskState>();
-        resetting.isReset = true;
-    }
-
-    void GetPotionAttributes()
-    {
-        var _flaskState = flask.GetComponent<flaskState>();
-        baseCol = _flaskState.flaskBase;
-        pot = _flaskState.flaskPotency;
-        sigil = _flaskState.sigilType;
+        var getActual = flask.GetComponent<flaskState>();
+        flaskBase = getActual.flaskBase;
+        flaskPot = getActual.flaskPotency;
+        flaskSigil = getActual.sigilType;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        RecipeChoice();
         if (other == flask.GetComponent<Collider>())
         {
-            // !!!!!!!!!!!!!
-            // PETERS SCRIPT SHOULD COME IN HERE PROBABLY, EITHER BY ENABLING ANOTHER OBJECT OR OUTRIGHT HAVING IT WITHIN THIS CODE
-            // YOU HAVE TO CHECK WHAT IS IN THE DESCRIPTION LIST SCRIPT (MANDY'S FOLDER) AND FLASK STATE SCRIPT (KOSTYA'S FOLDER)  
+            DeFactoProperties();
+            var curRequest = this.GetComponent<recipeGiver>();
+            var corOrder = flask.GetComponent<flaskState>();
 
-            GetPotionAttributes();
-            var stuff = this.GetComponent<description_list>();
-            var flaskStuff = flask.GetComponent<flaskState>();
-            flaskName = flaskStuff.flaskBase;
+            switch (curRequest.potionType)
+            {
+                case "Love":
+                    potionName = "LovePotion";
+                    break;
 
-            // Checks for love potions
-            if ((stuff.descriptionChosen == 0) || (stuff.descriptionChosen == 1) || (stuff.descriptionChosen == 2))
-            {
-                potionName = "LovePotion";
+                case "Soothe":
+                    potionName = "SoothePotion";
+                    break;
             }
-            // Checks for sleep potions
-            if ((stuff.descriptionChosen == 3) || (stuff.descriptionChosen == 4))
+            if (corOrder.isCorrectOrder)
             {
-                potionName = "SleepPotion";
+                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil)
+                {
+                    FiveStarReview();
+                }
+                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil)
+                {
+                    FourStarReview();
+                }
+                if (requiredBase == flaskBase && requiredPot < flaskPot)
+                {
+                    TwoStarReview1();
+                }
+                if (requiredBase == flaskBase && requiredPot > flaskPot)
+                {
+                    TwoStarReview2();
+                }
             }
-
-            if (requiredBase == baseCol && requiredPot == pot &&  requiredSigil == sigil)
+            else
             {
-                FiveStarReview();
+                IncorrectPotion();
             }
-            if (requiredBase == baseCol && requiredPot == pot &&  requiredSigil != sigil)
-            {
-                FourStarReview();
-            }
-            if (requiredBase == baseCol && requiredPot < pot)
-            {
-                TwoStarReview1();
-            }
-            if (requiredBase == baseCol && requiredPot > pot)
-            {
-                TwoStarReview2();
-            }
-            if (requiredBase != baseCol)
-            {
-                Incorrect();
-            }
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
             reviewDisplay.SetActive(true);
 
-
-
-            #region oldCode
-
-
-
-
-            // Checks for all conditions
-            //if (flaskChem.flaskBase == recipeState)
-            //{
-            //    if ((flaskTemp.flaskTemperature < recipeTemperature + 5) && (flaskTemp.flaskTemperature > recipeTemperature - 5))
-            //    {
-            //        if (flaskEnch.enchantmentType == enchantmentType)
-            //        {
-            //            if (corrOrder.isCorrectOrder)
-            //            {
-            RecipeChoice();
-                               PotionReset();
-            //            }
-            //        }
-
-            //    }
-            //}
-            //else if (!(flaskChem.flaskBase == recipeState) || !((flaskTemp.flaskTemperature < recipeTemperature + 5)
-            //    && (flaskTemp.flaskTemperature > recipeTemperature - 5)) || !(flaskEnch.enchantmentType == enchantmentType))
-            //{
-            //    wrongIngredients.SetActive(true);
-            //}
-            #endregion
+            // [NOTE] I am not sure about that part, see recipeGiver for more details
+            var endCheck = this.GetComponent<recipeGiver>();
+            if (endCheck.crashControl < 4)
+            {
+                endCheck.crashControl++;
+                this.GetComponent<recipeGiver>().ChoosingRecipe();
+            }
         }
     }
 
+    /*[NOTE] The second part of the code that checks for the base is redundant if we keep all potions of the same type
+     within the same colour scheme; the same thing applies to the recipeGiver script*/
     void FiveStarReview()
     {
-        if (potionName == "LovePotion" && flaskName == 7)
+        if (potionName == "LovePotion" && flaskBase == 7)
         {
-            reviewSentence = "The Potion was perfect, he is head over heels for me, we already planned our wedding for next week";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot) {
+                case 1:
+                    reviewSentence = "Thank you so much for your potion! We are going on a date in a few days!";
+                    break;
+                case 2:
+                    reviewSentence = "The potion was perfect! He is head over heels for me and we are already planning our wedding.";
+                    break;
+                case 3:
+                    reviewSentence = "Thank you for the potion. I basically got a pet right now.";
+                    break;
+            }
         }
 
-        if (potionName == "SleepPotion" && flaskName == 9)
+        if (potionName == "SoothePotion" && flaskBase == 8)
         {
-            reviewSentence = "The potion was perfect, whenever my neighbor is being loud I just gift him some tea and enjoy the rest of the day!";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "Lmao we haven't thought of that yet";
+                    break;
+                case 2:
+                    reviewSentence = "The potion was perfect! Whenever my neighbor is being loud, I just gift him some tea and enjoy the rest of the day!";
+                    break;
+                case 3:
+                    reviewSentence = "Thanks a lot! One cup of tea was just enough. Like my new neighbour way more, too.";
+                    break;
+            }
+                    
         }
     }
     void FourStarReview()
     {
-        if (potionName == "LovePotion" && flaskName == 7)
+        if (potionName == "LovePotion" && flaskBase == 7)
         {
-            reviewSentence = "The potion was almost perfect, he has fallen in love for me, however, his head caught on fire, I wanted a spark between us but that's not what I meant";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "She does seem interested in me, but she just can't stop talking about lizards whenever we go out... Okay, I guess...";
+                    break;
+                case 2:
+                    reviewSentence = "I guess it worked? He has fallen for me, but his head caught on fire! I wanted a spark between us but not like this!";
+                    break;
+                case 3:
+                    reviewSentence = "Okay, I guess I had it coming when I said 'obsessed', but for some reason he treats me as an Egyptian god?";
+                    break;
+            }
+                  
         }
 
-        if (potionName == "SleepPotion" && flaskName == 9)
+        if (potionName == "SoothePotion" && flaskBase == 8)
         {
-            reviewSentence = "The potion was almost perfect, my neighbor is asleep, however he snores so much he causes small earthquakes in the building";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "Lmao we haven't thought of that yet";
+                    break;
+                case 2:
+                    reviewSentence = "My neighbor is asleep, which is good. His snoring, however, causes our entire building to shake.";
+                    break;
+                case 3:
+                    reviewSentence = "Thank you for helping with my neighbour, but doing that to his wife was unneccessary...";
+                    break;
+            }
         }
     }
-    void TwoStarReview1()
+    void TwoStarReview1() // Potion too strong
     {
-        if (potionName == "LovePotion" && flaskName == 7)
+        if (potionName == "LovePotion" && flaskBase == 7)
         {
-            reviewSentence = "I wanted him to love me, however this potion made him extremely obsessed with me! He doesnt leave the house and says he likes to watch me sleep!";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "Okay, I just wanted to flirt and she's way too intense...";
+                    break;
+                case 2:
+                    reviewSentence = "I said I wanted him to love me, not follow me like a dog!";
+                    break;
+            }
         }
 
-        if (potionName == "SleepPotion" && flaskName == 9)
+        if (potionName == "SoothePotion" && flaskBase == 8)
         {
-            reviewSentence = "When I said I wanted my neighbor to be quiet, I expected a potion to make him unable to talk or unconscious! Not to kill him immediately! I am facing 5-to-10 for first degree murder.";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "Lmao we haven't thought of that yet";
+                    break;
+                case 2:
+                    reviewSentence = "I didn't mean it like that! I only wanted him to sleep! Jesus Christ, who hired you?";
+                    break;
+            }
         }
     }
-    
-    void TwoStarReview2()
+    void TwoStarReview2() // Potion too weak
     {
-        if (potionName == "LovePotion" && flaskName == 7)
+        if (potionName == "LovePotion" && flaskBase == 7)
         {
-            reviewSentence = "I wanted him to love me, but he seems like he just wants to be my friend! He keeps inviting me to watch sports and play cards with him!";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 2:
+                    reviewSentence = "Ugh, she's not much better! I still have to woo her!";
+                    break;
+                case 3:
+                    reviewSentence = "This is not enough passion! Did you not do it because you think you know better?";
+                    break;
+            }
         }
 
-        if (potionName == "SleepPotion" && flaskName == 9)
+        if (potionName == "SoothePotion" && flaskBase == 8)
         {
-            reviewSentence = "I wanted my neighbor to be quiet but this potion just made him act really tired and weird, he's not much more quiet he just slurs his words and barely opens his eyes now";
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            switch (requiredPot)
+            {
+                case 2:
+                    reviewSentence = "He is not quiet, he is just annoying now! Acts weird, too.";
+                    break;
+                case 3:
+                    reviewSentence = "You don't get the slang, do you? Sleeping is not what I meant by 'gone'!";
+                    break;
+            }
         }
     }
-
-    void Incorrect()
+    void IncorrectPotion()
     {
-        reviewSentence = "The potion was completely wrong";
-        reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+        reviewSentence = "This is not what I ordered at all! What did you do?!";
     }
 }

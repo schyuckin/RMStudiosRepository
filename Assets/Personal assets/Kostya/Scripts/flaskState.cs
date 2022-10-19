@@ -13,7 +13,6 @@ public class flaskState : MonoBehaviour
     [SerializeField] private Material neutralMaterial; // Default material
     public Collider[] possibleSigils = new Collider[3]; // All possible enchantments
     private bool isEnchanted;
-    public bool isReset;
     public bool isCorrectOrder;
     public GameObject baseLiquid; // Liquid inside the flask
     public Collider cauldronWater; // Refers to the cauldron
@@ -29,10 +28,6 @@ public class flaskState : MonoBehaviour
     void Update()
     {
         // This part is supposed to control the order, I'm not sure
-        if (isReset)
-        {
-            SettingProperties();
-        }
         if ((flaskBase == checkBase && flaskPotency != checkPot) || (flaskBase == checkBase && sigilType != checkSig))
         {
             isCorrectOrder = false;
@@ -44,9 +39,9 @@ public class flaskState : MonoBehaviour
 
     }
 
-    private void SettingProperties()
+    // Everything is set to default state
+    public void SettingProperties()
     {
-        isReset = false;
         flaskBase = 0;
         flaskPotency = 0;
         sigilType = 0;
@@ -60,12 +55,9 @@ public class flaskState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Dropping the flask into the cauldron to change the base
         if (other == cauldronWater)
         {
             baseMaterial = cauldronWater.GetComponent<Renderer>().material;
-            // Commented so that the water changes but the flask does not teleport God knows where
-            // transform.position = defaultLocation.transform.position;
             baseLiquid.GetComponent<Renderer>().material = baseMaterial;
             var chosenBase = cauldronWater.GetComponent<waterState>();
             flaskBase = chosenBase.currentState;

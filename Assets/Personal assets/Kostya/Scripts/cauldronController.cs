@@ -27,14 +27,11 @@ public class cauldronController : MonoBehaviour
 
     void SettingUp() // Default ingredient setting
     {
-        // This array control thing was ANNOYING to find
-        // Apparently it messed up the entire reset process
         arrayControl = 0;
         baseIngredients[0] = "None";
         baseIngredients[1] = "None";
         for (var k = 2; k < 10; k++)
         {
-            // From this point on water becomes totally black, placeholder for an explosion Easter Egg
             baseIngredients[k] = "Nothing Should Be Here";
         }
     }

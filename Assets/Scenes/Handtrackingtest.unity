@@ -782,7 +782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample text
+  m_text: SOMETHING IS WRONG IF YOU SEE THIS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1653,29 +1653,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fd0021683e8234391aa486c5f02f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeName:
-  - Neutral
-  - Reddish
-  - Blueish
-  - Yellowish
-  - Red
-  - Blue
-  - Yellow
-  - Purple
-  - Orange
-  - Green
-  - Black
   flask: {fileID: 8750086925738331988}
   teleporter: {fileID: 1336405833}
-  _flaskState: {fileID: 0}
   requiredBase: 0
   requiredPot: 0
   requiredSigil: 0
-  baseCol: 0
-  pot: 0
-  sigil: 0
+  flaskBase: 0
+  flaskPot: 0
+  flaskSigil: 0
   potionName: 
-  flaskName: 0
   reviewDisplay: {fileID: 1431915698}
 --- !u!23 &793245174
 MeshRenderer:
@@ -1732,16 +1718,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerRequests:
-  - '"I wish she liked me back" [Potency 1]'
-  - '"I want this wizard to fall desperately in love with me" [Potency 2]'
-  - '"I want them to worship me" [Potency 3]'
-  - '"My neighbor is so loud, I wish he could be quiet for once" [Potency 2]'
-  - '"I want them gone..." [Potency 3]'
+  - '"I wish she liked me back"'
+  - '"I want this wizard to fall desperately in love with me"'
+  - '"I want him to worship me"'
+  - '"My neighbor is so loud, I wish he could be quiet for once"'
+  - '"I want them gone..."'
+  potionTypes:
+  - Love
+  - Soothe
+  descriptionChosen: -1
+  descriptionShown: {fileID: 153829493}
   potionBase: 0
   potionPotency: 0
   potionSigil: 0
-  descriptionChosen: 0
-  descriptionShown: {fileID: 153829493}
+  potionType: 
+  lmao: 0
 --- !u!65 &793245176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92892,7 +92883,6 @@ MonoBehaviour:
   - {fileID: 2114485680}
   - {fileID: 1996916618}
   - {fileID: 752967840}
-  isReset: 0
   isCorrectOrder: 0
   baseLiquid: {fileID: 5241353222018447349}
   cauldronWater: {fileID: 668555804}
@@ -97314,7 +97304,6 @@ MonoBehaviour:
   burnerTemp: 20
   burnerDisplay: {fileID: 1266927155}
   potionFlask: {fileID: 8750086925738331988}
-  potencySet: 0
 --- !u!1 &9184592724206246275
 GameObject:
   m_ObjectHideFlags: 0

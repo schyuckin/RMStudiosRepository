@@ -28,8 +28,6 @@ public class resetCauldron : MonoBehaviour
             controllerReset.ingredientAmount = 0;
             var burnerPot = burner.GetComponent<burnerState>();
             burnerPot.burnerPotency = 0;
-            var isPotent = burner.GetComponent<burnerState>();
-            isPotent.potencySet = false;
             var ingredientChange = waterColouring.GetComponent<waterState>();
             ingredientChange.ingredientControl = 0;
             var colourChange = waterColouring.GetComponent<waterState>();
