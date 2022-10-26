@@ -12259,6 +12259,8 @@ MonoBehaviour:
   - 
   recentChemical: None
   ingredientAmount: 0
+  ingredientDelay: 0
+  timeDelay: 0.5
   waterBody: {fileID: 6572683484656309469}
   Chemical:
   - {fileID: 919132148436847606}
