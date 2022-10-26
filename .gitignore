@@ -72,3 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Assets/Inguz Media Studio/Free 2D Impact FX/
+
+Assets/Oculus/VR/Plugins/1.75.0/Win64OpenXR/OVRPlugin.dll
