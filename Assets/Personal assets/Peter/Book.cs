@@ -12,7 +12,7 @@ public class Book : MonoBehaviour
 
     private void Start()
     {
-        throw new NotImplementedException();
+        UpdatePage();
     }
 
     public void FlipPage(bool isRight)
