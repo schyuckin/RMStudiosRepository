@@ -9,8 +9,6 @@ public class cauldronController : MonoBehaviour
     public string recentChemical = "None"; // Latest thing added to the cauldron
     public int ingredientAmount = 0; // Amount of the objects currently in the cauldron
     private int arrayControl = 0; // Internal integer used to control the updates
-    [SerializeField] private bool ingredientDelay = false;
-    [SerializeField] private float timeDelay = 0.5f;
     public GameObject waterBody;
     [SerializeField] private GameObject[] Chemical = new GameObject[3];
     [SerializeField] private GameObject[] TeleportLocation = new GameObject[3];
@@ -41,21 +39,7 @@ public class cauldronController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeDelay > 0)
-        {
-            if (ingredientDelay)
-            {
-                timeDelay -= Time.deltaTime;
-                this.GetComponent<BoxCollider>().enabled = false;
-            }
-        }
-        else
-        {
-            timeDelay = 0;
-            ingredientDelay = false;
-            this.GetComponent<BoxCollider>().enabled = true;
-            timeDelay = 0.5f;
-        }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -76,10 +60,9 @@ public class cauldronController : MonoBehaviour
         //}
         // Essentially means that all of the other crap wont matter if it falls into the cauldron
         // Mostly done to prevent collision with the player, also has some constraints in terms of current code
-        if (other.tag == "baseElement" && !ingredientDelay)
+        if (other.tag == "baseElement")
         {
             // Lets the water body know how many chemicals are in the water
-            ingredientDelay = true;
             ingredientAmount++;
             waterBody.GetComponent<waterState>().enabled = true;
             var chemicals = waterBody.GetComponent<waterState>();
