@@ -9,6 +9,7 @@ TagManager:
   - baseElement
   - handElement
   - potionSigil
+  - ParticleSigil
   layers:
   - Default
   - TransparentFX
