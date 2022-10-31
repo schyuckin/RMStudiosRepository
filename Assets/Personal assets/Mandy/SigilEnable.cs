@@ -27,19 +27,17 @@ public class SigilEnable : MonoBehaviour
                 // [NOTE] I am not sure if the funky syntax works like that
                 if (collision.collider == differentSigils[0])
                 {
-                    differentParticles[0].GetComponent<ParticleSystem>().Play();
                     sigTouched = 1;
                 }
                 if (collision.collider == differentSigils[1])
                 {
-                    differentParticles[1].GetComponent<ParticleSystem>().Play();
                     sigTouched = 2;
                 }
                 if (collision.collider == differentSigils[2])
                 {
-                    differentParticles[2].GetComponent<ParticleSystem>().Play();
                     sigTouched = 3;
                 }
+                differentParticles[sigTouched - 1].GetComponent<ParticleSystem>().Play();
                 sigilTouched = sigTouched;
             }
             // [NOTE] Not sure about that either
