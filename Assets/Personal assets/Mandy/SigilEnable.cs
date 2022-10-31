@@ -6,6 +6,8 @@ public class SigilEnable : MonoBehaviour
 {
 
     [SerializeField] private Collider[] differentSigils = new Collider[3];
+    [SerializeField] private GameObject[] differentParticles = new GameObject[3];
+
     [SerializeField] private GameObject flask;
     private int sigTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
     public int sigilTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
@@ -20,19 +22,22 @@ public class SigilEnable : MonoBehaviour
         {
             if (collision.gameObject.tag == "potionSigil")
             {
-                particles.Play(); //Here we use the Play function to start the particle system
+                //particles.Play(); //Here we use the Play function to start the particle system
 
                 // [NOTE] I am not sure if the funky syntax works like that
                 if (collision.collider == differentSigils[0])
                 {
+                    differentParticles[0].GetComponent<ParticleSystem>().Play();
                     sigTouched = 1;
                 }
                 if (collision.collider == differentSigils[1])
                 {
+                    differentParticles[1].GetComponent<ParticleSystem>().Play();
                     sigTouched = 2;
                 }
                 if (collision.collider == differentSigils[2])
                 {
+                    differentParticles[2].GetComponent<ParticleSystem>().Play();
                     sigTouched = 3;
                 }
                 sigilTouched = sigTouched;
