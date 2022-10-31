@@ -65,21 +65,23 @@ public class flaskState : MonoBehaviour
             flaskPotency = chosenPotency.burnerPotency;
 
         }
-        if (other.tag == "potionSigil" && !isEnchanted)
-        {
-            isEnchanted = true;
-            if (other == possibleSigils[0])
-            {
-                sigilType = 1;
-            }
-            if (other == possibleSigils[1])
-            {
-                sigilType = 2;
-            }
-            if (other == possibleSigils[2])
-            {
-                sigilType = 3;
-            }
-        }
+        // [NOTE] Commented for now since this is being declared in a Sigil Enable script
+
+        //if (other.tag == "potionSigil" && !isEnchanted)
+        //{
+        //    isEnchanted = true;
+        //    if (other == possibleSigils[0])
+        //    {
+        //        sigilType = 1;
+        //    }
+        //    if (other == possibleSigils[1])
+        //    {
+        //        sigilType = 2;
+        //    }
+        //    if (other == possibleSigils[2])
+        //    {
+        //        sigilType = 3;
+        //    }
+        //}
     }
 }

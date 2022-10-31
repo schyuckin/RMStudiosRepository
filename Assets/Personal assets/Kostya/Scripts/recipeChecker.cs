@@ -95,8 +95,10 @@ public class recipeChecker : MonoBehaviour
                 this.GetComponent<recipeGiver>().ChoosingRecipe();
                 flask.transform.position = teleporter.transform.position;
             }
+            this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
+            // [NOTE] There MAY be a small delay where the player can see the next request before it disappears, can probably be fixed with some rearrangement
             reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
-            reviewDisplay.SetActive(true);
+            reviewDisplay.SetActive(true); // Displaying the review
         }
     }
 

@@ -9,7 +9,7 @@ public class SigilEnable : MonoBehaviour
     [SerializeField] private GameObject flask;
     private int sigTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
     public int sigilTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         //Saving the component for future use 
         ParticleSystem particles = GetComponentInChildren<ParticleSystem>();
@@ -18,28 +18,30 @@ public class SigilEnable : MonoBehaviour
         //or else we would get an error if we work with not existing component
         if (particles != null)
         {
-            if (other.CompareTag("potionSigil"))
+            if (collision.gameObject.tag == "potionSigil")
             {
                 particles.Play(); //Here we use the Play function to start the particle system
-                if (other == differentSigils[0])
+
+                // [NOTE] I am not sure if the funky syntax works like that
+                if (collision.collider == differentSigils[0])
                 {
                     sigTouched = 1;
                 }
-                if (other == differentSigils[1])
+                if (collision.collider == differentSigils[1])
                 {
                     sigTouched = 2;
                 }
-                if (other == differentSigils[2])
+                if (collision.collider == differentSigils[2])
                 {
                     sigTouched = 3;
                 }
                 sigilTouched = sigTouched;
             }
-            // Not sure about that
-            if (other == flask.GetComponent<BoxCollider>())
+            // [NOTE] Not sure about that either
+            if (collision.collider == flask.GetComponent<BoxCollider>())
             {
                 // Passing stuff to flask
-                var passingToFlask = GetComponent<flaskState>();
+                var passingToFlask = flask.GetComponent<flaskState>();
                 passingToFlask.sigilType = sigilTouched;
             }
             sigTouched = 0;

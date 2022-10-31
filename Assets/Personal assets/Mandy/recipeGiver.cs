@@ -106,6 +106,11 @@ public class recipeGiver : MonoBehaviour
         ChoosingRecipe();
     }
 
+    public void disablingRequest()
+    {
+        descriptionShown.GetComponent<TextMeshPro>().enabled = false;
+    }
+
     // Triggering recipes from the Inspector
     private void Update()
     {
