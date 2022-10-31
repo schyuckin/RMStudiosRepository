@@ -11,7 +11,16 @@ public class SigilEnable : MonoBehaviour
     [SerializeField] private GameObject flask;
     private int sigTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
     public int sigilTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
-    private void OnCollisionEnter(Collision collision)
+
+    public void Start()
+    {
+        differentParticles[0].GetComponent<ParticleSystem>().Pause();
+        differentParticles[1].GetComponent<ParticleSystem>().Pause();
+        differentParticles[2].GetComponent<ParticleSystem>().Pause();
+    }
+
+
+    private void OnTriggerEnter(Collision collision)
     {
         //Saving the component for future use 
         ParticleSystem particles = GetComponentInChildren<ParticleSystem>();
