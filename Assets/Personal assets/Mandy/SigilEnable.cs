@@ -55,7 +55,7 @@ public class SigilEnable : MonoBehaviour
                 sigilTouched = sigTouched;
             }
             sigTouched = 0;
-            particles.Stop(); //Here we use the Stop function to stop the particle system from playing
+            //particles.Stop(); //Here we use the Stop function to stop the particle system from playing
         }
     }
 
@@ -66,6 +66,9 @@ public class SigilEnable : MonoBehaviour
             // Passing stuff to flask
             var passingToFlask = flask.GetComponent<flaskState>();
             passingToFlask.sigilType = sigilTouched;
+            differentParticles[0].Stop();
+            differentParticles[1].Stop();
+            differentParticles[2].Stop();
             StartCoroutine(SigilDecay());
         }
     }
