@@ -10744,6 +10744,14 @@ PrefabInstance:
       propertyPath: _interactors.Array.data[0]
       value: 
       objectReference: {fileID: 466150286}
+    - target: {fileID: 2732622960096270320, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732622960096270320, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3281206119671778663, guid: d93b7e04b48cd7b4fa849695dba2ce9c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -12055,6 +12063,7 @@ GameObject:
   - component: {fileID: 752967842}
   - component: {fileID: 752967841}
   - component: {fileID: 752967840}
+  - component: {fileID: 752967844}
   m_Layer: 0
   m_Name: Sigil of Soul (3)
   m_TagString: potionSigil
@@ -12140,6 +12149,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -87.839, z: 0}
+--- !u!54 &752967844
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752967839}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &793245170
 GameObject:
   m_ObjectHideFlags: 0
@@ -12527,11 +12552,13 @@ MonoBehaviour:
   - {fileID: 1996916618}
   - {fileID: 752967840}
   differentParticles:
-  - {fileID: 1990726785}
-  - {fileID: 1940704008}
-  - {fileID: 119069540}
+  - {fileID: 1990726788}
+  - {fileID: 1940704011}
+  - {fileID: 119069543}
   flask: {fileID: 8750086925738331988}
+  sigTouched: 0
   sigilTouched: 0
+  isPlayed: 0
 --- !u!1 &1028837332
 GameObject:
   m_ObjectHideFlags: 0
@@ -38639,6 +38666,7 @@ GameObject:
   - component: {fileID: 1996916620}
   - component: {fileID: 1996916619}
   - component: {fileID: 1996916618}
+  - component: {fileID: 1996916622}
   m_Layer: 0
   m_Name: Sigil of Body (2)
   m_TagString: potionSigil
@@ -38724,6 +38752,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -87.839, z: 0}
+--- !u!54 &1996916622
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996916617}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2051667624
 GameObject:
   m_ObjectHideFlags: 0
