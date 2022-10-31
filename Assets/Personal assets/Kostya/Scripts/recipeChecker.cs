@@ -23,7 +23,7 @@ public class recipeChecker : MonoBehaviour
 
     [SerializeField] private string potionName;
 
-    private string reviewSentence;
+    private string reviewSentence = "Default message";
     public GameObject reviewDisplay;
     void Start()
     {
@@ -66,31 +66,26 @@ public class recipeChecker : MonoBehaviour
                     potionName = "SoothePotion";
                     break;
             }
-            if (corOrder.isCorrectOrder)
-            {
-                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil)
+                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil && corOrder.isCorrectOrder)
                 {
                     FiveStarReview();
                 }
-                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil)
+                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil && corOrder.isCorrectOrder)
                 {
                     FourStarReview();
                 }
-                if (requiredBase == flaskBase && requiredPot < flaskPot)
+                if (requiredBase == flaskBase && requiredPot < flaskPot && corOrder.isCorrectOrder)
                 {
                     TwoStarReview1();
                 }
-                if (requiredBase == flaskBase && requiredPot > flaskPot)
+                if (requiredBase == flaskBase && requiredPot > flaskPot && corOrder.isCorrectOrder)
                 {
                     TwoStarReview2();
                 }
-            }
-            else
+            else if (requiredBase != flaskBase || (!corOrder.isCorrectOrder))
             {
                 IncorrectPotion();
             }
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
-            reviewDisplay.SetActive(true);
 
             // [NOTE] I am not sure about that part, see recipeGiver for more details
             var endCheck = this.GetComponent<recipeGiver>();
@@ -98,7 +93,10 @@ public class recipeChecker : MonoBehaviour
             {
                 endCheck.crashControl++;
                 this.GetComponent<recipeGiver>().ChoosingRecipe();
+                flask.transform.position = teleporter.transform.position;
             }
+            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
+            reviewDisplay.SetActive(true);
         }
     }
 

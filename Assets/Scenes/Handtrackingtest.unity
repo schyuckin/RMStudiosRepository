@@ -12059,6 +12059,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e650b91350245e458145656a5dbb267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  differentSigils:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  flask: {fileID: 0}
+  sigilTouched: 0
 --- !u!1 &752967839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12072,7 +12078,7 @@ GameObject:
   - component: {fileID: 752967841}
   - component: {fileID: 752967840}
   m_Layer: 0
-  m_Name: Sigil of Psyche (3)
+  m_Name: Sigil of Soul (3)
   m_TagString: potionSigil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12295,8 +12301,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.53150934, y: 0.016373629, z: 1.1737641}
-  m_Center: {x: -0.020000929, y: 0.0072931917, z: -0.11355081}
+  m_Size: {x: 0.52897656, y: 0.016373629, z: 1.1259874}
+  m_Center: {x: -0.023964375, y: 0.007293165, z: -0.1391024}
 --- !u!1 &824712559
 GameObject:
   m_ObjectHideFlags: 0
@@ -17995,8 +18001,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336405833}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.36863434, y: 18.630379, z: 12.233835}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.195, y: 14.276, z: -1.853}
+  m_LocalScale: {x: 0.68, y: 0.68, z: 0.67999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1028837333}
@@ -18391,6 +18397,7 @@ GameObject:
   - component: {fileID: 1431915699}
   - component: {fileID: 1431915701}
   - component: {fileID: 1431915700}
+  - component: {fileID: 1431915702}
   m_Layer: 0
   m_Name: review_text
   m_TagString: Untagged
@@ -18552,6 +18559,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1431915702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431915698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd481398ec0ad0244b57edabcb11cc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reviewPopUp: {fileID: 1431915698}
 --- !u!1 &1503070658
 GameObject:
   m_ObjectHideFlags: 0
@@ -117464,7 +117484,7 @@ GameObject:
   - component: {fileID: 8750086925738331995}
   m_Layer: 0
   m_Name: Potion Flask
-  m_TagString: Untagged
+  m_TagString: flask
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
