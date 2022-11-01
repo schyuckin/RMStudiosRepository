@@ -12,13 +12,20 @@ public class SigilEnable : MonoBehaviour
     [SerializeField] private int sigTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
     public int sigilTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
 
-    public void Start()
+    //I need to check if no other particles have been enabled beforehand or else they will stack on each other
+    public bool particleEnabled;
+
+    public void Start() 
     {
         differentParticles[0].Pause();
         differentParticles[1].Pause();
         differentParticles[2].Pause();
         Debug.Log("They paused");
-    }
+        particleEnabled = false;
+
+}
+    
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,18 +45,31 @@ public class SigilEnable : MonoBehaviour
                 // [NOTE] I am not sure if the funky syntax works like that
                 if (other == differentSigils[0])
                 {
+                if (particleEnabled == false)
+                {
                     differentParticles[0].Play();
                     sigTouched = 1;
+                    particleEnabled = true;
                 }
+                }
+
                 if (other == differentSigils[1])
+                {
+                if (particleEnabled == false)
                 {
                     differentParticles[1].Play();
                     sigTouched = 2;
+                    particleEnabled = true;
+                }
                 }
                 if (other == differentSigils[2])
                 {
+                if (particleEnabled == false)
+                {
                     differentParticles[2].Play();
                     sigTouched = 3;
+                    particleEnabled = true;
+                }
                 }
 
                 sigilTouched = sigTouched;
