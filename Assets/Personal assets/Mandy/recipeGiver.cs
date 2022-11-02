@@ -45,7 +45,7 @@ public class recipeGiver : MonoBehaviour
             // Magenta (R + B) [7], [Potency 1], Mind Sigil (1), Love
 
             case 0:
-                potionBase = 7;
+                potionBase = 4;
                 potionPotency = 1;
                 potionSigil = 1;
                 potionType = potionTypes[0];
@@ -55,7 +55,7 @@ public class recipeGiver : MonoBehaviour
             //Magenta (R + B) [7], [Potency 2], Mind Sigil (1), Love
 
             case 1:
-                potionBase = 7;
+                potionBase = 4;
                 potionPotency = 2;
                 potionSigil = 1;
                 potionType = potionTypes[0];
@@ -65,7 +65,7 @@ public class recipeGiver : MonoBehaviour
             //Magenta (R + B) [7], [Potency 3], Mind Sigil (1), Love
 
             case 2:
-                potionBase = 7;
+                potionBase = 6;
                 potionPotency = 3;
                 potionSigil = 1;
                 potionType = potionTypes[0];
@@ -75,7 +75,7 @@ public class recipeGiver : MonoBehaviour
             // Green (B + Y) [9], [Potency 2], Body Sigil (2), Soothe
 
             case 3:
-                potionBase = 9;
+                potionBase = 6;
                 potionPotency = 2;
                 potionSigil = 2;
                 potionType = potionTypes[1];
@@ -85,7 +85,7 @@ public class recipeGiver : MonoBehaviour
             //Orange (B + Y) [9], [Potency 3], Body Sigil (2), Soothe
 
             case 4:
-                potionBase = 9;
+                potionBase = 6;
                 potionPotency = 3;
                 potionSigil = 2;
                 potionType = potionTypes[1];

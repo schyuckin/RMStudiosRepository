@@ -21,18 +21,36 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private int flaskBase;
     [SerializeField] private int flaskPot; // De facto properties of the potion, contained within a flask
     [SerializeField] private int flaskSigil;
+    [SerializeField] private flaskState flaskProp;
     [SerializeField] private string potionName;
 
     [Space]
 
-    private string reviewSentence = "Default message";
+    private string reviewSentence = "If you see this, it means that potionmaking went wrong. We apologize.";
+    private bool orderDelay = false;
+    private float droppingDelay = 1.0f;
     public GameObject reviewDisplayText;
     public GameObject reviewDisplayEntire;
-    public GameObject cauldronResetTrigger;
-    public GameObject burnerResetting;
+    [SerializeField] private cauldronController resettingCauldron;
     void Start()
     {
-        reviewStars.SetFloat("_ProgressBorder", -1);
+        reviewStars.SetFloat("_ProgressBorder", -1); // Resetting the material back to normal
+    }
+
+    private void Update()
+    {
+        if (droppingDelay > 0)
+        {
+            if (orderDelay)
+            {
+                droppingDelay -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            droppingDelay = 0;
+            orderDelay = false;
+        }
     }
 
     // Acquires needed recipe properties when it gets chosen
@@ -44,7 +62,7 @@ public class recipeChecker : MonoBehaviour
         requiredSigil = getRequired.potionSigil;
     }
 
-    // Acquires actual potion properties when it gets submitted
+    // Acquires actual potion properties when the flask gets submitted
     void DeFactoProperties()
     {
         var getActual = flask.GetComponent<flaskState>();
@@ -55,13 +73,14 @@ public class recipeChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == flask.GetComponent<Collider>())
+        if (other == flask.GetComponent<Collider>() && !orderDelay)
         {
+            orderDelay = true;
             DeFactoProperties();
             var curRequest = this.GetComponent<recipeGiver>();
             var corOrder = flask.GetComponent<flaskState>();
             flask.GetComponent<flaskState>().SettingProperties();
-            cauldronResetTrigger.GetComponent<resetCauldron>().ResettingCauldron();
+            resettingCauldron.SettingUp();
 
             switch (curRequest.potionType)
             {
@@ -73,27 +92,33 @@ public class recipeChecker : MonoBehaviour
                     potionName = "SoothePotion";
                     break;
             }
-                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil && corOrder.isCorrectOrder)
+            if (!flaskProp.deadPotion)
+            {
+                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil)
                 {
                     FiveStarReview();
                 }
-                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil && corOrder.isCorrectOrder)
+                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil)
                 {
                     FourStarReview();
                 }
-                if (requiredBase == flaskBase && requiredPot < flaskPot && corOrder.isCorrectOrder)
+                if (requiredBase == flaskBase && requiredPot < flaskPot)
                 {
                     TwoStarReview1();
                 }
-                if (requiredBase == flaskBase && requiredPot > flaskPot && corOrder.isCorrectOrder)
+                if (requiredBase == flaskBase && requiredPot > flaskPot)
                 {
                     TwoStarReview2();
                 }
-            else if (requiredBase != flaskBase || (!corOrder.isCorrectOrder))
-            {
-                IncorrectPotion();
+                else if (requiredBase != flaskBase)
+                {
+                    IncorrectPotion();
+                }
             }
-            // [NOTE] I am not sure about that part, see recipeGiver for more details
+            else
+            {
+                DeadPotion();
+            }
             var endCheck = this.GetComponent<recipeGiver>();
             if (endCheck.crashControl < 4)
             {
@@ -115,7 +140,7 @@ public class recipeChecker : MonoBehaviour
      within the same colour scheme; the same thing applies to the recipeGiver script*/
     void FiveStarReview()
     {
-        if (potionName == "LovePotion" && flaskBase == 7)
+        if (potionName == "LovePotion")
         {
             switch (requiredPot) {
                 case 1:
@@ -130,7 +155,7 @@ public class recipeChecker : MonoBehaviour
             }
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 9)
+        if (potionName == "SoothePotion")
         {
             switch (requiredPot)
             {
@@ -150,7 +175,7 @@ public class recipeChecker : MonoBehaviour
     }
     void FourStarReview()
     {
-        if (potionName == "LovePotion" && flaskBase == 7)
+        if (potionName == "LovePotion")
         {
             switch (requiredPot)
             {
@@ -167,7 +192,7 @@ public class recipeChecker : MonoBehaviour
                   
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 9)
+        if (potionName == "SoothePotion")
         {
             switch (requiredPot)
             {
@@ -186,7 +211,7 @@ public class recipeChecker : MonoBehaviour
     }
     void TwoStarReview1() // Potion too strong
     {
-        if (potionName == "LovePotion" && flaskBase == 7)
+        if (potionName == "LovePotion")
         {
             switch (flaskPot)
             {
@@ -215,7 +240,7 @@ public class recipeChecker : MonoBehaviour
     }
     void TwoStarReview2() // Potion too weak
     {
-        if (potionName == "LovePotion" && flaskBase == 7)
+        if (potionName == "LovePotion")
         {
             switch (flaskPot)
             {
@@ -231,7 +256,7 @@ public class recipeChecker : MonoBehaviour
             }
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 9)
+        if (potionName == "SoothePotion")
         {
             switch (flaskPot)
             {
@@ -250,7 +275,14 @@ public class recipeChecker : MonoBehaviour
     }
     void IncorrectPotion()
     {
-        reviewSentence = "This is not what I ordered at all! What did you do?!";
+        reviewSentence = "This is not what I ordered at all! This sucks!";
         reviewStars.SetFloat("_ProgressBorder", -1);
     }
+
+    void DeadPotion()
+    {
+        reviewSentence = "WHAT THE HELL DID YOU DO???";
+        reviewStars.SetFloat("_ProgressBorder", -1);
+    }
+
 }

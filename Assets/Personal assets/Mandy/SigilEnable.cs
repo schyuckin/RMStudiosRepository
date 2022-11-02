@@ -22,7 +22,6 @@ public class SigilEnable : MonoBehaviour
         differentParticles[2].Pause();
         Debug.Log("They paused");
         particleEnabled = false;
-
 }
     
 
