@@ -34,7 +34,7 @@ public class SigilEnable : MonoBehaviour
 
         //Here we check if we indeed find the Particle system and can use it
         //or else we would get an error if we work with not existing component
-        if (particles != null)
+       if (particles != null)
         {
             if (other.tag == "potionSigil")
             {

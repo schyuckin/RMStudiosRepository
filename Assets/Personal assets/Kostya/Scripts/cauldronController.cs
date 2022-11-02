@@ -95,15 +95,15 @@ public class cauldronController : MonoBehaviour
         {
             case "Red stuff":
                 recentChemical = "Red";
-                Chemical[0].transform.position = TeleportLocation[0].transform.position;
+                other.transform.position = TeleportLocation[0].transform.position;
                 break;
             case "Yellow stuff":
                 recentChemical = "Yellow";
-                Chemical[1].transform.position = TeleportLocation[1].transform.position;
+                other.transform.position = TeleportLocation[1].transform.position;
                 break;
             case "Blue stuff":
                 recentChemical = "Blue";
-                Chemical[2].transform.position = TeleportLocation[2].transform.position;
+                other.transform.position = TeleportLocation[2].transform.position;
                 break;
         }
         while (arrayControl < ingredientAmount)
