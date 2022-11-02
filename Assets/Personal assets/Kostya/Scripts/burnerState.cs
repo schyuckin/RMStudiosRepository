@@ -9,7 +9,7 @@ public class burnerState : MonoBehaviour
     public float burnerTemperature = 20.0f; // Current temperature of the burner
     public int burnerPotency = 0;
     [SerializeField] private int burnerTemp = 20; // Converted to float
-    [SerializeField] private GameObject[] burnerDisplay = new GameObject[2]; // Shows the temperature
+    [SerializeField] private GameObject burnerDisplay; // Shows the temperature
     // [SerializeField] private Material[] burnerMoods = new Material[3]; // Just a fancier name to describe the visuals I suppose
     public GameObject potionFlask;
     void Start()
@@ -50,9 +50,7 @@ public class burnerState : MonoBehaviour
         }
         // Displays the current temperature outside
         string burnerTempString = burnerTemp.ToString();
-        burnerDisplay[0].GetComponent<TextMeshPro>().text = burnerTempString;
-        string burnerPotencyString = burnerPotency.ToString();
-        burnerDisplay[1].GetComponent<TextMeshPro>().text = burnerPotencyString;
+        burnerDisplay.GetComponent<TextMeshPro>().text = burnerTempString;
     }
     IEnumerator CoolingDown()
     {
