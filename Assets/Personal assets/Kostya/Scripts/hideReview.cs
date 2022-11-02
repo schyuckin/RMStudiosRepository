@@ -7,9 +7,23 @@ public class hideReview : MonoBehaviour
 {
     public GameObject reviewPopUp;
     public GameObject currentRequest;
+    [SerializeField] private bool manualActivation = false;
     private void OnTriggerEnter(Collider other)
     {
-        currentRequest.GetComponent<TextMeshPro>().enabled = true;
+        ReviewToRequest();
+    }
+    private void ReviewToRequest()
+    {
+        currentRequest.SetActive(true);
         reviewPopUp.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (manualActivation)
+        {
+            manualActivation = false;
+            ReviewToRequest();
+        }
     }
 }

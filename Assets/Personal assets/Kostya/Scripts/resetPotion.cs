@@ -6,12 +6,26 @@ public class resetPotion : MonoBehaviour
 {
     [SerializeField] private GameObject flask;
     [SerializeField] private GameObject teleporter;
+    [SerializeField] private bool manualActivation = false;
     // Start is called before the first frame update
 
-    // Resets the state of the flask & teleports it to its original position
-    private void OnTriggerEnter (Collider other)
+    void ResettingFlask()
     {
         flask.transform.position = teleporter.transform.position;
         flask.GetComponent<flaskState>().SettingProperties();
+    }
+
+    private void Update()
+    {
+     if (manualActivation)
+        {
+            manualActivation = false;
+            ResettingFlask();
+        }
+    }
+    // Resets the state of the flask & teleports it to its original position
+    private void OnTriggerEnter (Collider other)
+    {
+        ResettingFlask();
     }
 }

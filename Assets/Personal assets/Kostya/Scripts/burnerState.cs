@@ -14,6 +14,7 @@ public class burnerState : MonoBehaviour
     public GameObject potionFlask;
     void Start()
     {
+        SettingBurner();
         // Instead of this crap we're gonna get sparkles or bubbles or whatever
         // this.GetComponent<Renderer>().material = burnerMoods[0];
     }
@@ -82,5 +83,12 @@ public class burnerState : MonoBehaviour
             //    givenTemperature.flaskTemperature = burnerTemp;
             //}
         }
+    }
+
+    public void SettingBurner()
+    {
+        burnerTemperature = 20.0f;
+        burnerTemp = 20;
+        burnerPotency = 0;
     }
 }

@@ -9,7 +9,9 @@ public class recipeGiver : MonoBehaviour
     [SerializeField] private string[] potionTypes = new string[] {"Love", "Soothe"};
     public int descriptionChosen = -1; // Number of the recipe that is currently requested, used in the recipeChecker script
     private string requestChosen; // Text of the current request
-    public GameObject descriptionShown; // Display of the current request in the overworld
+    public GameObject descriptionShownText; // Display of the current request in the overworld
+    public GameObject descriptionShown;
+    public int crashControl = 0;
 
     [Space]
 
@@ -21,7 +23,6 @@ public class recipeGiver : MonoBehaviour
     [Space]
 
     [SerializeField] private bool manualActivation = false;
-    public int crashControl = 0;
 
     public void ChoosingRecipe()
     {
@@ -31,7 +32,7 @@ public class recipeGiver : MonoBehaviour
             descriptionChosen = Random.Range(0, customerRequests.Count);
         }
         requestChosen = customerRequests[descriptionChosen];
-        descriptionShown.GetComponent<TextMeshPro>().text = requestChosen;
+        descriptionShownText.GetComponent<TextMeshPro>().text = requestChosen;
 
         // descriptionChosen shows the position of the ORIGINAL element in array, NOT the one seen in Inspector in its place
         switch (descriptionChosen)
@@ -108,7 +109,7 @@ public class recipeGiver : MonoBehaviour
 
     public void disablingRequest()
     {
-        descriptionShown.GetComponent<TextMeshPro>().enabled = false;
+        descriptionShown.SetActive(false);
     }
 
     // Triggering recipes from the Inspector

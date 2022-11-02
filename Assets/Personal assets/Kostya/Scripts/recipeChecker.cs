@@ -8,8 +8,8 @@ public class recipeChecker : MonoBehaviour
 
     [SerializeField] private GameObject flask;
     [SerializeField] private GameObject teleporter;
+    [SerializeField] public Material reviewStars;
 
-    [SerializeField] private Material reviewStars;
     [Space]
 
     [SerializeField] private int requiredBase;
@@ -21,14 +21,18 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private int flaskBase;
     [SerializeField] private int flaskPot; // De facto properties of the potion, contained within a flask
     [SerializeField] private int flaskSigil;
-
     [SerializeField] private string potionName;
 
+    [Space]
+
     private string reviewSentence = "Default message";
-    public GameObject reviewDisplay;
+    public GameObject reviewDisplayText;
+    public GameObject reviewDisplayEntire;
+    public GameObject cauldronResetTrigger;
+    public GameObject burnerResetting;
     void Start()
     {
-
+        reviewStars.SetFloat("_ProgressBorder", -1);
     }
 
     // Acquires needed recipe properties when it gets chosen
@@ -56,6 +60,8 @@ public class recipeChecker : MonoBehaviour
             DeFactoProperties();
             var curRequest = this.GetComponent<recipeGiver>();
             var corOrder = flask.GetComponent<flaskState>();
+            flask.GetComponent<flaskState>().SettingProperties();
+            cauldronResetTrigger.GetComponent<resetCauldron>().ResettingCauldron();
 
             switch (curRequest.potionType)
             {
@@ -87,7 +93,6 @@ public class recipeChecker : MonoBehaviour
             {
                 IncorrectPotion();
             }
-
             // [NOTE] I am not sure about that part, see recipeGiver for more details
             var endCheck = this.GetComponent<recipeGiver>();
             if (endCheck.crashControl < 4)
@@ -98,8 +103,11 @@ public class recipeChecker : MonoBehaviour
             }
             this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
             // [NOTE] There MAY be a small delay where the player can see the next request before it disappears, can probably be fixed with some rearrangement
-            reviewDisplay.GetComponent<TextMeshPro>().text = reviewSentence;
-            reviewDisplay.SetActive(true); // Displaying the review
+            reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
+            reviewDisplayEntire.SetActive(true); // Displaying the review
+            flaskBase = 0;
+            flaskPot = 0;
+            flaskSigil = 0;
         }
     }
 
@@ -138,7 +146,7 @@ public class recipeChecker : MonoBehaviour
             }
                     
         }
-        reviewStars.SetFloat("ProgressBorder", 0);
+        reviewStars.SetFloat("_ProgressBorder", 0);
     }
     void FourStarReview()
     {
@@ -174,7 +182,7 @@ public class recipeChecker : MonoBehaviour
                     break;
             }
         }
-        reviewStars.SetFloat("ProgressBorder", -0.033f);
+        reviewStars.SetFloat("_ProgressBorder", -0.033f);
     }
     void TwoStarReview1() // Potion too strong
     {
@@ -203,7 +211,7 @@ public class recipeChecker : MonoBehaviour
                     break;
             }
         }
-        reviewStars.SetFloat("ProgressBorder", -0.0615f);
+        reviewStars.SetFloat("_ProgressBorder", -0.0615f);
     }
     void TwoStarReview2() // Potion too weak
     {
@@ -237,6 +245,6 @@ public class recipeChecker : MonoBehaviour
     void IncorrectPotion()
     {
         reviewSentence = "This is not what I ordered at all! What did you do?!";
-        reviewStars.SetFloat("ProgressBorder", -1);
+        reviewStars.SetFloat("_ProgressBorder", -1);
     }
 }

@@ -21,13 +21,7 @@ public class cauldronController : MonoBehaviour
         SettingUp();
     }
 
-    private void OnDisable() // Resets the ingredients when the side button is pressed
-    {
-        SettingUp();
-
-    }
-
-    void SettingUp() // Default ingredient setting
+    public void SettingUp() // Default ingredient setting
     {
         arrayControl = 0;
         baseIngredients[0] = "None";

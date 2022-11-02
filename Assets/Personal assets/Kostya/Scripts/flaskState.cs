@@ -11,7 +11,6 @@ public class flaskState : MonoBehaviour
     public int sigilType; // Enchantment used on the flask
     private int checkSig;
     [SerializeField] private Material neutralMaterial; // Default material
-    public Collider[] possibleSigils = new Collider[3]; // All possible enchantments
     private bool isEnchanted;
     public bool isCorrectOrder;
     public GameObject baseLiquid; // Liquid inside the flask
