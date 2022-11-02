@@ -26,6 +26,10 @@ public class resetPotion : MonoBehaviour
     // Resets the state of the flask & teleports it to its original position
     private void OnTriggerEnter (Collider other)
     {
-        ResettingFlask();
+        if (other.tag != "flask")
+        {
+            ResettingFlask();
+        }
+
     }
 }
