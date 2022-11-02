@@ -5,11 +5,11 @@ using TMPro;
 
 public class hideReview : MonoBehaviour
 {
-    [SerializeField] private GameObject reviewPopUp;
-    [SerializeField] private GameObject currentRequest;
+    public GameObject reviewPopUp;
+    public GameObject currentRequest;
     private void OnTriggerEnter(Collider other)
     {
-        reviewPopUp.GetComponent<TextMeshPro>().enabled = false;
         currentRequest.GetComponent<TextMeshPro>().enabled = true;
+        reviewPopUp.SetActive(false);
     }
 }
