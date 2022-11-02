@@ -9,6 +9,7 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private GameObject flask;
     [SerializeField] private GameObject teleporter;
 
+    [SerializeField] private Material reviewStars;
     [Space]
 
     [SerializeField] private int requiredBase;
@@ -137,6 +138,7 @@ public class recipeChecker : MonoBehaviour
             }
                     
         }
+        reviewStars.SetFloat("ProgressBorder", 0);
     }
     void FourStarReview()
     {
@@ -172,6 +174,7 @@ public class recipeChecker : MonoBehaviour
                     break;
             }
         }
+        reviewStars.SetFloat("ProgressBorder", -0.033f);
     }
     void TwoStarReview1() // Potion too strong
     {
@@ -200,6 +203,7 @@ public class recipeChecker : MonoBehaviour
                     break;
             }
         }
+        reviewStars.SetFloat("ProgressBorder", -0.0615f);
     }
     void TwoStarReview2() // Potion too weak
     {
@@ -228,9 +232,11 @@ public class recipeChecker : MonoBehaviour
                     break;
             }
         }
+        reviewStars.SetFloat("ProgressBorder", -0.0615f);
     }
     void IncorrectPotion()
     {
         reviewSentence = "This is not what I ordered at all! What did you do?!";
+        reviewStars.SetFloat("ProgressBorder", -1);
     }
 }
