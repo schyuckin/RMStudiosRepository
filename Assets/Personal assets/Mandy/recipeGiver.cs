@@ -72,20 +72,20 @@ public class recipeGiver : MonoBehaviour
                 break;
 
             //"My neighbor is so loud, I wish he could be quiet for once"
-            //Orange (R + Y) [8], [Potency 2], Body Sigil (2), Soothe
+            // Green (B + Y) [9], [Potency 2], Body Sigil (2), Soothe
 
             case 3:
-                potionBase = 8;
+                potionBase = 9;
                 potionPotency = 2;
                 potionSigil = 2;
                 potionType = potionTypes[1];
                 break;
 
             //"I want them gone..."
-            //Orange (R + Y) [8], [Potency 3], Body Sigil (2), Soothe
+            //Orange (B + Y) [9], [Potency 3], Body Sigil (2), Soothe
 
             case 4:
-                potionBase = 8;
+                potionBase = 9;
                 potionPotency = 3;
                 potionSigil = 2;
                 potionType = potionTypes[1];

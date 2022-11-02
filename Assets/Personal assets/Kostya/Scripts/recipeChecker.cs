@@ -130,7 +130,7 @@ public class recipeChecker : MonoBehaviour
             }
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 8)
+        if (potionName == "SoothePotion" && flaskBase == 9)
         {
             switch (requiredPot)
             {
@@ -167,7 +167,7 @@ public class recipeChecker : MonoBehaviour
                   
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 8)
+        if (potionName == "SoothePotion" && flaskBase == 9)
         {
             switch (requiredPot)
             {
@@ -199,7 +199,7 @@ public class recipeChecker : MonoBehaviour
             }
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 8)
+        if (potionName == "SoothePotion" && flaskBase == 9)
         {
             switch (requiredPot)
             {
@@ -228,7 +228,7 @@ public class recipeChecker : MonoBehaviour
             }
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 8)
+        if (potionName == "SoothePotion" && flaskBase == 9)
         {
             switch (requiredPot)
             {

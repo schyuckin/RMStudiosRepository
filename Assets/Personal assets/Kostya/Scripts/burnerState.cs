@@ -11,7 +11,6 @@ public class burnerState : MonoBehaviour
     [SerializeField] private int burnerTemp = 20; // Converted to float
     [SerializeField] private GameObject[] burnerDisplay = new GameObject[2]; // Shows the temperature
     // [SerializeField] private Material[] burnerMoods = new Material[3]; // Just a fancier name to describe the visuals I suppose
-    public GameObject potionFlask;
     void Start()
     {
         SettingBurner();
@@ -76,7 +75,6 @@ public class burnerState : MonoBehaviour
         // Heats up the flask
         if (isActivated)
         {
-            var givenTemperature = potionFlask.GetComponent<flaskState>();
             // Prevents the flask from dropping its own temperature whenever the heater starts to cool down
             //if (givenTemperature.flaskTemperature <= burnerTemp)
             //{
