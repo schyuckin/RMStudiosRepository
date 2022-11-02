@@ -188,12 +188,12 @@ public class recipeChecker : MonoBehaviour
     {
         if (potionName == "LovePotion" && flaskBase == 7)
         {
-            switch (requiredPot)
+            switch (flaskPot)
             {
-                case 1:
+                case 2:
                     reviewSentence = "Okay, I just wanted to flirt and she's way too intense...";
                     break;
-                case 2:
+                case 3:
                     reviewSentence = "I said I wanted him to love me, not follow me like a dog!";
                     break;
             }
@@ -201,12 +201,12 @@ public class recipeChecker : MonoBehaviour
 
         if (potionName == "SoothePotion" && flaskBase == 9)
         {
-            switch (requiredPot)
+            switch (flaskPot)
             {
-                case 1:
+                case 2:
                     reviewSentence = "Lmao we haven't thought of that yet";
                     break;
-                case 2:
+                case 3:
                     reviewSentence = "I didn't mean it like that! I only wanted him to sleep! Jesus Christ, who hired you?";
                     break;
             }
@@ -217,12 +217,15 @@ public class recipeChecker : MonoBehaviour
     {
         if (potionName == "LovePotion" && flaskBase == 7)
         {
-            switch (requiredPot)
+            switch (flaskPot)
             {
-                case 2:
+                case 0:
+                    reviewSentence = "It does not work! It looks like a potion, but it isn't!";
+                    break;
+                case 1:
                     reviewSentence = "Ugh, she's not much better! I still have to woo her!";
                     break;
-                case 3:
+                case 2:
                     reviewSentence = "This is not enough passion! Did you not do it because you think you know better?";
                     break;
             }
@@ -230,17 +233,20 @@ public class recipeChecker : MonoBehaviour
 
         if (potionName == "SoothePotion" && flaskBase == 9)
         {
-            switch (requiredPot)
+            switch (flaskPot)
             {
-                case 2:
+                case 0:
+                    reviewSentence = "It does not work! It looks like a potion, but it isn't!";
+                    break;
+                case 1:
                     reviewSentence = "He is not quiet, he is just annoying now! Acts weird, too.";
                     break;
-                case 3:
+                case 2:
                     reviewSentence = "You don't get the slang, do you? Sleeping is not what I meant by 'gone'!";
                     break;
             }
         }
-        reviewStars.SetFloat("ProgressBorder", -0.0615f);
+        reviewStars.SetFloat("_ProgressBorder", -0.0615f);
     }
     void IncorrectPotion()
     {
