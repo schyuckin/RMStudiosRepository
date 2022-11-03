@@ -45,7 +45,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 6.498019, g: 5.6316166, b: 0, a: 0}
+    - _Color: {r: 1.8829588, g: 51.377876, b: 0, a: 0}
     - _DissolveSpeed: {r: -0.1, g: -0.5, b: 0, a: 0}
     - _Speed1: {r: 0, g: -0.3, b: 0, a: 0}
     - _SpeedVert: {r: -0.1, g: -0.5, b: 0, a: 0}
