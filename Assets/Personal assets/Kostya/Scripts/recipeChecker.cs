@@ -91,6 +91,10 @@ public class recipeChecker : MonoBehaviour
                 case "Soothe":
                     potionName = "SoothePotion";
                     break;
+
+                case "Energy":
+                    potionName = "EnergyPotion";
+                    break;
             }
             if (!flaskProp.deadPotion)
             {
@@ -160,7 +164,7 @@ public class recipeChecker : MonoBehaviour
             switch (requiredPot)
             {
                 case 1:
-                    reviewSentence = "Lmao we haven't thought of that yet";
+                    reviewSentence = "I was going to write a complaint but I started falling asleep as I was typing it so I guess it worked.";
                     break;
                 case 2:
                     reviewSentence = "The potion was perfect! Whenever my neighbor is being loud, I just gift him some tea and enjoy the rest of the day!";
@@ -171,6 +175,23 @@ public class recipeChecker : MonoBehaviour
             }
                     
         }
+
+        if (potionName == "EnergyPotion")
+        {
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "They announced my promotion halfway through the presentation... Okay, thanks!";
+                    break;
+                case 2:
+                    reviewSentence = "I WON I WON I WON I WON I WON I WON I WON I WON I WON";
+                    break;
+                case 3:
+                    reviewSentence = "I don't know I ended up in Mexico, but it's cool here. I might need another potion to get back though.";
+                    break;
+            }
+        }
+
         reviewStars.SetFloat("_ProgressBorder", 0);
     }
     void FourStarReview()
@@ -197,7 +218,7 @@ public class recipeChecker : MonoBehaviour
             switch (requiredPot)
             {
                 case 1:
-                    reviewSentence = "Lmao we haven't thought of that yet";
+                    reviewSentence = "It worked but it kind of feels like I'm still dreaming.";
                     break;
                 case 2:
                     reviewSentence = "My neighbor is asleep, which is good. His snoring, however, causes our entire building to shake.";
@@ -207,6 +228,23 @@ public class recipeChecker : MonoBehaviour
                     break;
             }
         }
+
+        if (potionName == "EnergyPotion")
+        {
+            switch (requiredPot)
+            {
+                case 1:
+                    reviewSentence = "It was fine until I started speaking Japanese midway. My boss was impressed, but I need to learn the language now.";
+                    break;
+                case 2:
+                    reviewSentence = "When they gave me my victory trophy, I accidentally broke it because my legs could not stop twitching.";
+                    break;
+                case 3:
+                    reviewSentence = "I ran so fast I ended up in North Korea. Luckily, there was still some potion left...";
+                    break;
+            }
+        }
+
         reviewStars.SetFloat("_ProgressBorder", -0.033f);
     }
     void TwoStarReview1() // Potion too strong
@@ -219,23 +257,61 @@ public class recipeChecker : MonoBehaviour
                     reviewSentence = "Okay, I just wanted to flirt and she's way too intense...";
                     break;
                 case 3:
-                    reviewSentence = "I said I wanted him to love me, not follow me like a dog!";
+                    switch (requiredPot)
+                    {
+                        case 1:
+                            reviewSentence = "SHE'S KNOCKING ON THE DOOR RIGHT NOW AND SCREAMING SWEETIE PIE SEND SOMETHING TO CALM HER";
+                            break;
+                        case 2:
+                            reviewSentence = "I said I wanted him to love me, not follow me like a dog!";
+                            break;
+                    }
                     break;
             }
         }
 
-        if (potionName == "SoothePotion" && flaskBase == 9)
+        if (potionName == "SoothePotion")
         {
             switch (flaskPot)
             {
                 case 2:
-                    reviewSentence = "Lmao we haven't thought of that yet";
+                    reviewSentence = "My son had trouble issues falling asleep and he's not waking up for the third day. If this continues, I will report to the authorities.";
                     break;
                 case 3:
-                    reviewSentence = "I didn't mean it like that! I only wanted him to sleep! Jesus Christ, who hired you?";
+                    switch (requiredPot)
+                    {
+                        case 1:
+                            reviewSentence = "My son hasn't woken up in two weeks, what did you give him?";
+                            break;
+                        case 2:
+                            reviewSentence = "I didn't mean it like that! I only wanted him to sleep! Jesus Christ, who hired you?";
+                            break;
+                    }
                     break;
             }
         }
+
+        if (potionName == "EnergyPotion")
+        {
+            switch (flaskPot)
+            {
+                case 2:
+                    reviewSentence = "I could not stop screaming so the meeting members had to use earplugs. I apologised, but it was awkward.";
+                    break;
+                case 3:
+                    switch (requiredPot)
+                    {
+                        case 1:
+                            reviewSentence = "They postponed the meeting for two days and told me to seek professional help... Your store has a reputation now.";
+                            break;
+                        case 2:
+                            reviewSentence = "I got disqualified because I ran the entire race two times while they were preparing for it.";
+                            break;
+                    }
+                    break;
+            }
+        }
+
         reviewStars.SetFloat("_ProgressBorder", -0.0615f);
     }
     void TwoStarReview2() // Potion too weak
@@ -245,10 +321,18 @@ public class recipeChecker : MonoBehaviour
             switch (flaskPot)
             {
                 case 0:
-                    reviewSentence = "It does not work! It looks like a potion, but it isn't!";
+                    reviewSentence = "Nobody told me that this thing is active for such a short period of time.";
                     break;
                 case 1:
-                    reviewSentence = "Ugh, she's not much better! I still have to woo her!";
+                    switch (requiredPot)
+                    {
+                        case 2:
+                            reviewSentence = "Ugh, she's not much better! I still have to woo her!";
+                            break;
+                        case 3:
+                            reviewSentence = "They said they want to take it slow... Who even says that? I don't have much time!";
+                            break;
+                    }
                     break;
                 case 2:
                     reviewSentence = "This is not enough passion! Did you not do it because you think you know better?";
@@ -264,13 +348,46 @@ public class recipeChecker : MonoBehaviour
                     reviewSentence = "It does not work! It looks like a potion, but it isn't!";
                     break;
                 case 1:
-                    reviewSentence = "He is not quiet, he is just annoying now! Acts weird, too.";
+                    switch (requiredPot)
+                    {
+                        case 2:
+                            reviewSentence = "He is not quiet, he is just annoying now! Acts weird, too.";
+                            break;
+                        case 3:
+                            reviewSentence = "Soooooo.....Does this just work slowly or should I use the second portion orrrrr....?";
+                            break;
+                    }
                     break;
                 case 2:
-                    reviewSentence = "You don't get the slang, do you? Sleeping is not what I meant by 'gone'!";
+                    reviewSentence = "It was awkward to see them in the hallway after I sent condolences to their family... Do you really not get the slang?";
                     break;
             }
         }
+
+        if (potionName == "EnergyPotion")
+        {
+            switch (flaskPot)
+            {
+                case 0:
+                    reviewSentence = "It worked for like five and a half minutes!";
+                    break;
+                case 1:
+                    switch (requiredPot)
+                    {
+                        case 2:
+                            reviewSentence = "Still got beat by a little kid... I gotta know where he gets his potions.";
+                            break;
+                        case 3:
+                            reviewSentence = "Made it out of the city and that's it. Now I also have to pay for the bus back.";
+                            break;
+                    }
+                    break;
+                case 2:
+                    reviewSentence = "This is only good enough to run through a country as small as Luxembourg xD xD =D";
+                    break;
+            }
+        }
+
         reviewStars.SetFloat("_ProgressBorder", -0.0615f);
     }
     void IncorrectPotion()

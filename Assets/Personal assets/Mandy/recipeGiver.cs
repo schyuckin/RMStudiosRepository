@@ -41,8 +41,8 @@ public class recipeGiver : MonoBehaviour
             /* [NOTE] The cases are deliberately declared in such a way that we can easily manipulate each of the recipes
             This can be used if we DO decide to use different colours for the same potion later on */
 
-            //"I wish she liked me back"
-            // Magenta (R + B) [7], [Potency 1], Mind Sigil (1), Love
+            // Girl from alchemstry class
+            // Magenta (R + B) [4], [Potency 1], Mind Sigil (1), Love
 
             case 0:
                 potionBase = 4;
@@ -51,8 +51,8 @@ public class recipeGiver : MonoBehaviour
                 potionType = potionTypes[0];
                 break;
 
-            //"I want this wizard to be desperately in love with me"
-            //Magenta (R + B) [7], [Potency 2], Mind Sigil (1), Love
+            // Wizard in love
+            //Magenta (R + B) [4], [Potency 2], Mind Sigil (1), Love
 
             case 1:
                 potionBase = 4;
@@ -61,34 +61,74 @@ public class recipeGiver : MonoBehaviour
                 potionType = potionTypes[0];
                 break;
 
-            //"I want him to worship me"
-            //Magenta (R + B) [7], [Potency 3], Mind Sigil (1), Love
+            // Worshipping dude
+            //Magenta (R + B) [4], [Potency 3], Mind Sigil (1), Love
 
             case 2:
-                potionBase = 6;
+                potionBase = 4;
                 potionPotency = 3;
                 potionSigil = 1;
                 potionType = potionTypes[0];
                 break;
 
-            //"My neighbor is so loud, I wish he could be quiet for once"
-            // Green (B + Y) [9], [Potency 2], Body Sigil (2), Soothe
+            // Trouble with sleep
+            // Green (B + Y) [6], [Potency 1], Body Sigil (2), Soothe
 
             case 3:
+                potionBase = 6;
+                potionPotency = 1;
+                potionSigil = 1;
+                potionType = potionTypes[0];
+                break;
+
+            // Loud neighbour
+            // Green (B + Y) [6], [Potency 2], Body Sigil (2), Soothe
+
+            case 4:
                 potionBase = 6;
                 potionPotency = 2;
                 potionSigil = 2;
                 potionType = potionTypes[1];
                 break;
 
-            //"I want them gone..."
-            //Orange (B + Y) [9], [Potency 3], Body Sigil (2), Soothe
+            // Roommate murder
+            //Orange (B + Y) [6], [Potency 3], Body Sigil (2), Soothe
 
-            case 4:
+            case 5:
                 potionBase = 6;
                 potionPotency = 3;
                 potionSigil = 2;
                 potionType = potionTypes[1];
+                break;
+
+            // Work project boost
+            // Orange (R + B) [5], [Potency 1], Soul Sigil (3), Energy
+
+            case 6:
+                potionBase = 5;
+                potionPotency = 1;
+                potionSigil = 3;
+                potionType = potionTypes[2];
+                break;
+
+            // Marathon thing
+            // Orange (R + B) [5], [Potency 2], Soul Sigil (3), Energy
+
+            case 7:
+                potionBase = 5;
+                potionPotency = 2;
+                potionSigil = 3;
+                potionType = potionTypes[2];
+                break;
+
+            // Walking through the country
+            // Orange (R + B) [5], [Potency 3], Soul Sigil (3), Energy
+
+            case 8:
+                potionBase = 5;
+                potionPotency = 3;
+                potionSigil = 3;
+                potionType = potionTypes[2];
                 break;
         }
 
