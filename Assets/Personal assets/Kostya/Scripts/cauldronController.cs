@@ -17,6 +17,7 @@ public class cauldronController : MonoBehaviour
     private bool dead = false;
     [SerializeField] private int ingredientAmount = 0; // Amount of the objects currently in the cauldron
     public int cauldronPotency = 0; // Potency of the cauldron
+    public int cauldronSigil;
     [SerializeField] private GameObject cauldronPotencyDisplay; // Placeholder for the display of current potency turned into intensity
 
     [Space] // Name and state
