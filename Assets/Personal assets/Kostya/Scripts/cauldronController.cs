@@ -42,6 +42,7 @@ public class cauldronController : MonoBehaviour
         currentState = 0;
         cauldronPotency = 0;
         currentStateName = null;
+        dead = false;
         waterBody.GetComponent<MeshRenderer>().material = baseColours[currentState];
     }
 
@@ -52,14 +53,14 @@ public class cauldronController : MonoBehaviour
             if (ingredientDelay)
             {
                 timeDelay -= Time.deltaTime;
-                this.GetComponent<BoxCollider>().enabled = false;
+                this.GetComponent<MeshCollider>().enabled = false;
             }
         }
         else
         {
             timeDelay = 0;
             ingredientDelay = false;
-            this.GetComponent<BoxCollider>().enabled = true;
+            this.GetComponent<MeshCollider>().enabled = true;
             timeDelay = 0.5f;
         }
     }

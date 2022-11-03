@@ -37,7 +37,7 @@ public class flaskState : MonoBehaviour
     {
         flaskBase = cauldronControl.currentState;
         flaskPotency = cauldronControl.cauldronPotency;
-        // [NOTE] Here you should get the sigil from the cauldron itself
+        sigilType = cauldronControl.cauldronSigil;
         baseMaterial = cauldronControl.baseColours[flaskBase];
         baseLiquid.GetComponent<Renderer>().material = baseMaterial;
 

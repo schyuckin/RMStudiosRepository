@@ -12,10 +12,11 @@ public class SigilEnable : MonoBehaviour
     [SerializeField] private GameObject flask;
     [SerializeField] private int sigTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
     public int sigilTouched = 0; // Used in conjuction to prevent some potentially weird value passing stuff
-    private cauldronController caulControl;
+    [SerializeField] private cauldronController caulControl;
 
     //I need to check if no other particles have been enabled beforehand or else they will stack on each other
     public bool particleEnabled;
+    public bool isEnchanted = false; // Does the cauldron have the sigil on it?
 
     public ParticleSystem[] aura_purple = new ParticleSystem[5];
 
@@ -28,15 +29,21 @@ public class SigilEnable : MonoBehaviour
         Debug.Log("They paused");
         particleEnabled = false;
 
+        CauldronEffects();
+    }
+
+    public void CauldronEffects()
+    {
+        isEnchanted = false;
         cauldronEffects[0].GetComponentInChildren<Renderer>().enabled = false;
         cauldronEffects[0].GetComponentInChildren<Light>().enabled = false;
         cauldronEffects[1].GetComponentInChildren<Renderer>().enabled = false;
         cauldronEffects[1].GetComponentInChildren<Light>().enabled = false;
-        aura_purple[0].Pause();
-        aura_purple[1].Pause();
-        aura_purple[2].Pause();
-        aura_purple[3].Pause();
-        aura_purple[4].Pause();
+        aura_purple[0].Stop();
+        aura_purple[1].Stop();
+        aura_purple[2].Stop();
+        aura_purple[3].Stop();
+        aura_purple[4].Stop();
         cauldronEffects[2].GetComponentInChildren<Light>().enabled = false;
     }
     
@@ -89,44 +96,44 @@ public class SigilEnable : MonoBehaviour
 
                 sigilTouched = sigTouched;
             }
+
+            if (other.gameObject.tag == "Cauldron")
+            {
+                if (!isEnchanted)
+                {
+                    isEnchanted = true;
+                    switch (sigilTouched)
+                    {
+                        case 1: // Mind
+                            cauldronEffects[0].GetComponentInChildren<Renderer>().enabled = true;
+                            cauldronEffects[0].GetComponentInChildren<Light>().enabled = true;
+                            caulControl.cauldronSigil = 1;
+                            break;
+                        case 2: // Body
+                            cauldronEffects[1].GetComponentInChildren<Renderer>().enabled = true;
+                            cauldronEffects[1].GetComponentInChildren<Light>().enabled = true;
+                            caulControl.cauldronSigil = 2;
+                            break;
+                        case 3: // Soul
+                            cauldronEffects[2].GetComponentInChildren<Light>().enabled = true;
+                            aura_purple[0].Play();
+                            aura_purple[1].Play();
+                            aura_purple[2].Play();
+                            aura_purple[3].Play();
+                            aura_purple[4].Play();
+                            caulControl.cauldronSigil = 3;
+                            break;
+                    }
+                }
+
+                differentParticles[0].Stop();
+                differentParticles[1].Stop();
+                differentParticles[2].Stop();
+                StartCoroutine(SigilDecay());
+                particleEnabled = false;
+            }
             //sigTouched = 0;
             //particles.Stop(); //Here we use the Stop function to stop the particle system from playing
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //STOP PARTICLES IF SIGILE IS TOUCHED AND WILL PASS ON ONTO THE CAULDRON
-        if (collision.gameObject.tag == "Cauldron")
-        {
-            differentParticles[0].Stop();
-            differentParticles[1].Stop();
-            differentParticles[2].Stop();
-            StartCoroutine(SigilDecay());
-            particleEnabled = false;
-
-            switch (sigTouched)
-            {
-                case 1:
-                    caulControl.cauldronSigil = sigTouched;
-                    cauldronEffects[0].GetComponentInChildren<Renderer>().enabled = true;
-                    cauldronEffects[0].GetComponentInChildren<Light>().enabled = true;
-                    break;
-                case 2:
-                    caulControl.cauldronSigil = sigTouched;
-                    cauldronEffects[1].GetComponentInChildren<Renderer>().enabled = true;
-                    cauldronEffects[1].GetComponentInChildren<Light>().enabled = true;
-                    break;
-                case 3:
-                    caulControl.cauldronSigil = sigTouched;
-                    cauldronEffects[2].GetComponentInChildren<Light>().enabled = true;
-                    aura_purple[0].Play();
-                    aura_purple[1].Play();
-                    aura_purple[2].Play();
-                    aura_purple[3].Play();
-                    aura_purple[4].Play();
-                    break;
-            }
         }
     }
 

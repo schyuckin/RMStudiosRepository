@@ -5,6 +5,7 @@ using UnityEngine;
 public class resetCauldron : MonoBehaviour
 {
     public cauldronController caulControl;
+    public SigilEnable[] caulEffects = new SigilEnable[2];
     [SerializeField] private bool manualActivation = false;
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,9 @@ public class resetCauldron : MonoBehaviour
     public void ResettingCauldron()
     {
         caulControl.SettingUp();
+        for (var i = 0; i < 2; i++)
+        {
+            caulEffects[i].CauldronEffects();
+        }
     }
 }
