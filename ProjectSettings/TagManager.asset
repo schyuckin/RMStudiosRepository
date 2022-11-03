@@ -13,6 +13,7 @@ TagManager:
   - Sigil_mind_particle
   - Sigil_body_particle
   - Sigil_psyche_particle
+  - Cauldron
   layers:
   - Default
   - TransparentFX

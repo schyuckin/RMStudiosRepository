@@ -36,7 +36,7 @@ Material:
     m_Floats:
     - _ElecAmount: 2
     - _ElecScale: 20
-    - _ElecThickness: 0.5
+    - _ElecThickness: 0.8
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
