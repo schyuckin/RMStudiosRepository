@@ -25,7 +25,7 @@ public class Book : MonoBehaviour
         {
             currentPage--;
         }
-        currentPage = Mathf.Clamp(currentPage, 0, 2);
+        currentPage = Mathf.Clamp(currentPage, 0, 3);
         UpdatePage();
     }
 
