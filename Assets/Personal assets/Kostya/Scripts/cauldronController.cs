@@ -134,11 +134,11 @@ public class cauldronController : MonoBehaviour
 
     private void PotencyUpdate()
     {
-        if (ingredientAmount >=1 && ingredientAmount <= 5) // Weak potion
+        if (ingredientAmount >=1 && ingredientAmount <= 7) // Weak potion
         {
             cauldronPotency = 1;
         }
-        if (ingredientAmount >= 6 && ingredientAmount <= 13) // Mild potion
+        if (ingredientAmount >= 8 && ingredientAmount <= 13) // Mild potion
         {
             cauldronPotency = 2;
         }
