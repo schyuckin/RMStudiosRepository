@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class cauldronController : MonoBehaviour
 {
@@ -16,9 +17,10 @@ public class cauldronController : MonoBehaviour
     [SerializeField] private flaskState flaskPassing;
     private bool dead = false;
     [SerializeField] private int ingredientAmount = 0; // Amount of the objects currently in the cauldron
+    private float currentFill = 0.0f;
+    public Image fillBar;
     public int cauldronPotency = 0; // Potency of the cauldron
     public int cauldronSigil;
-    [SerializeField] private GameObject cauldronPotencyDisplay; // Placeholder for the display of current potency turned into intensity
 
     [Space] // Name and state
 
@@ -33,17 +35,20 @@ public class cauldronController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         SettingUp();
     }
 
     public void SettingUp() // Default ingredient setting
     {
+        waterBody.GetComponent<MeshRenderer>().material = baseColours[currentState];
+        fillBar.fillAmount = 0;
+        currentFill = fillBar.fillAmount;
         ingredientAmount = 0;
         currentState = 0;
         cauldronPotency = 0;
         currentStateName = null;
         dead = false;
-        waterBody.GetComponent<MeshRenderer>().material = baseColours[currentState];
     }
 
     private void DropDelay()
@@ -65,8 +70,17 @@ public class cauldronController : MonoBehaviour
         }
     }
 
+    private void BarFilling()
+    {
+        if (fillBar.fillAmount < currentFill + (float)0.05 * ingredientAmount)
+        {
+            fillBar.fillAmount += (float)0.01;
+        }
+    }
+
     void Update()
     {
+        BarFilling();
         DropDelay();
     }
 
@@ -112,6 +126,7 @@ public class cauldronController : MonoBehaviour
         {
             currentState = 7;
             dead = true;
+            DeathCreation();
         }
         currentStateName = States[currentState];
         waterBody.GetComponent<MeshRenderer>().material = baseColours[currentState];
@@ -136,7 +151,14 @@ public class cauldronController : MonoBehaviour
         {
             cauldronPotency = 4;
             dead = true;
+            DeathCreation();
         }
+    }
+
+    private void DeathCreation()
+    {
+            // Show Death sign on top
+            // Turn the bar black
     }
 
     void OnTriggerEnter(Collider other)
@@ -160,6 +182,8 @@ public class cauldronController : MonoBehaviour
             }
             ingredientDelay = true;
             ingredientAmount++;
+            currentFill = fillBar.fillAmount;
+            BarFilling();
             PotencyUpdate();
             ColourUpdate();
         }

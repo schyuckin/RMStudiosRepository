@@ -6,7 +6,7 @@ using UnityEngine;
 public class recipeGiver : MonoBehaviour
 {
     [SerializeField] private List<string> customerRequests = new List<string>(); // List with all of the recipes
-    [SerializeField] private string[] potionTypes = new string[] {"Love", "Soothe"};
+    [SerializeField] private string[] potionTypes = new string[] {"Love", "Soothe", "Energy"};
     public int descriptionChosen = -1; // Number of the recipe that is currently requested, used in the recipeChecker script
     private string requestChosen; // Text of the current request
     public GameObject descriptionShownText; // Display of the current request in the overworld
@@ -159,7 +159,7 @@ public class recipeGiver : MonoBehaviour
         {
             manualActivation = false;
             // [NOTE] This is needed for preventing what seems to be either an infinite loop or a stack overflow
-            if (crashControl < 4)
+            if (crashControl < customerRequests.Count - 1)
             {
                 crashControl++;
                 this.GetComponent<recipeGiver>().ChoosingRecipe();
