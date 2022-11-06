@@ -14,6 +14,7 @@ TagManager:
   - Sigil_body_particle
   - Sigil_psyche_particle
   - Cauldron
+  - StartGame
   layers:
   - Default
   - TransparentFX
