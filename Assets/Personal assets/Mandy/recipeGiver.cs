@@ -11,7 +11,7 @@ public class recipeGiver : MonoBehaviour
     private string requestChosen; // Text of the current request
     public GameObject descriptionShownText; // Display of the current request in the overworld
     public GameObject descriptionShown;
-    public int crashControl = 0;
+    [HideInInspector] public int crashControl = 0;
 
     [Space]
 

@@ -21,16 +21,19 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private int flaskBase;
     [SerializeField] private int flaskPot; // De facto properties of the potion, contained within a flask
     [SerializeField] private int flaskSigil;
-    [SerializeField] private flaskState flaskProp;
     [SerializeField] private string potionName;
 
     [Space]
 
     private string reviewSentence = "If you see this, it means that potionmaking went wrong. We apologize.";
     private bool orderDelay = false;
-    private float droppingDelay = 1.0f;
+    private float droppingDelay = 3.0f;
+
+    [Space]
+
     public GameObject reviewDisplayText;
-    public GameObject reviewDisplayEntire;
+    [SerializeField] private flaskState flaskProp;
+    [SerializeField] private moveReview movingReview;
     [SerializeField] private cauldronController resettingCauldron;
     void Start()
     {
@@ -133,7 +136,7 @@ public class recipeChecker : MonoBehaviour
             this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
             // [NOTE] There MAY be a small delay where the player can see the next request before it disappears, can probably be fixed with some rearrangement
             reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
-            reviewDisplayEntire.SetActive(true); // Displaying the review
+            movingReview.MovingUpDown();
             flaskBase = 0;
             flaskPot = 0;
             flaskSigil = 0;

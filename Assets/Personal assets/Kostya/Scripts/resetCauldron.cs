@@ -24,7 +24,7 @@ public class resetCauldron : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "flask")
+        if ((other.tag != "flask") || (other.tag != "baseElement"))
         {
             ResettingCauldron();
         }
