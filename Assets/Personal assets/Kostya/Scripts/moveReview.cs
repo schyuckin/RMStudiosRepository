@@ -18,6 +18,8 @@ public class moveReview : MonoBehaviour
     [Space]
 
     [SerializeField] private bool manualActivation = false;
+    [SerializeField] private bool touchDelay = false;
+    [SerializeField] private float timeDelay = 1.0f;
 
     private void Start()
     {
@@ -25,8 +27,9 @@ public class moveReview : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag != "flask") || (other.tag != "baseElement"))
+        if (((other.tag != "flask") || (other.tag != "baseElement")) && (!touchDelay))
         {
+            touchDelay = true;
             currentRequest.SetActive(true);
             MovingUpDown();
         }
@@ -60,8 +63,19 @@ public class moveReview : MonoBehaviour
     }
     public void Update()
     {
+        if (touchDelay)
+        {
+            timeDelay -= Time.deltaTime;
+            if (timeDelay < 0)
+            {
+                timeDelay = 0;
+                touchDelay = false;
+            }
+        }
+
         if (manualActivation)
         {
+            touchDelay = true;
             currentRequest.SetActive(true);
             manualActivation = false;
             MovingUpDown();

@@ -6,11 +6,13 @@ using UnityEngine;
 public class recipeGiver : MonoBehaviour
 {
     [SerializeField] private List<string> customerRequests = new List<string>(); // List with all of the recipes
+    public List<string> customerNames = new List<string>(); // List with all customer names
     [SerializeField] private string[] potionTypes = new string[] {"Love", "Soothe", "Energy"};
     public int descriptionChosen = -1; // Number of the recipe that is currently requested, used in the recipeChecker script
     private string requestChosen; // Text of the current request
-    public GameObject descriptionShownText; // Display of the current request in the overworld
-    public GameObject descriptionShown;
+    [SerializeField] private GameObject descriptionShownText; // Display of the current request in the overworld
+    [SerializeField] private GameObject descriptionShown; // More stuff Don't ask
+    [SerializeField] private GameObject nameShown; // Name of the person whose request is being processed
     [HideInInspector] public int crashControl = 0;
 
     [Space]
@@ -24,6 +26,7 @@ public class recipeGiver : MonoBehaviour
 
     [SerializeField] private bool manualActivation = false;
 
+
     public void ChoosingRecipe()
     {
         // Chooses a random recipe and displays it in the overworld
@@ -33,6 +36,7 @@ public class recipeGiver : MonoBehaviour
         }
         requestChosen = customerRequests[descriptionChosen];
         descriptionShownText.GetComponent<TextMeshPro>().text = requestChosen;
+        nameShown.GetComponent<TextMeshPro>().text = customerNames[descriptionChosen];
 
         // descriptionChosen shows the position of the ORIGINAL element in array, NOT the one seen in Inspector in its place
         switch (descriptionChosen)
@@ -142,7 +146,7 @@ public class recipeGiver : MonoBehaviour
     }
     void Start()
     {
-        // First cycle is started manually due to a while-loop condition
+        Random.InitState((int)System.DateTime.Now.Ticks);
         descriptionChosen = Random.Range(0, customerRequests.Count);
         ChoosingRecipe();
     }

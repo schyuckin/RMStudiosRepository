@@ -10,11 +10,9 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private GameObject teleporter;
     [SerializeField] public Material reviewStars;
 
-    [Space]
-
-    [SerializeField] private int requiredBase;
-    [SerializeField] private int requiredPot; // Desired properties for the currently chosen potion recipe
-    [SerializeField] private int requiredSigil;
+    private int requiredBase;
+    private int requiredPot; // Desired properties for the currently chosen potion recipe
+    private int requiredSigil;
 
     [Space]
 
@@ -35,6 +33,14 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private flaskState flaskProp;
     [SerializeField] private moveReview movingReview;
     [SerializeField] private cauldronController resettingCauldron;
+    [SerializeField] private recipeGiver recipeInfo;
+
+    [SerializeField] List<Material> customerPictures = new List<Material>();
+
+    [Space]
+
+    [SerializeField] private TextMeshPro currentCustomerName;
+    [SerializeField] private GameObject currentCustomerPicture;
 
     [Space] private AudioSource _audioSource;
     void Start()
@@ -62,10 +68,9 @@ public class recipeChecker : MonoBehaviour
     // Acquires needed recipe properties when it gets chosen
     public void RequestedProperties()
     {
-        var getRequired = this.GetComponent<recipeGiver>();
-        requiredBase = getRequired.potionBase;
-        requiredPot = getRequired.potionPotency;
-        requiredSigil = getRequired.potionSigil;
+        requiredBase = recipeInfo.potionBase;
+        requiredPot = recipeInfo.potionPotency;
+        requiredSigil = recipeInfo.potionSigil;
     }
 
     // Acquires actual potion properties when the flask gets submitted
@@ -77,72 +82,78 @@ public class recipeChecker : MonoBehaviour
         flaskSigil = getActual.sigilType;
     }
 
+    private void HandingInFlask()
+    {
+        orderDelay = true;
+        DeFactoProperties();
+        var curRequest = this.GetComponent<recipeGiver>();
+        var corOrder = flask.GetComponent<flaskState>();
+        flask.GetComponent<flaskState>().SettingProperties();
+        currentCustomerName.text = recipeInfo.customerNames[recipeInfo.descriptionChosen];
+        currentCustomerPicture.GetComponent<MeshRenderer>().material = customerPictures[recipeInfo.descriptionChosen];
+        resettingCauldron.SettingUp();
+        _audioSource.Play();
+        switch (curRequest.potionType)
+        {
+            case "Love":
+                potionName = "LovePotion";
+                break;
+
+            case "Soothe":
+                potionName = "SoothePotion";
+                break;
+
+            case "Energy":
+                potionName = "EnergyPotion";
+                break;
+        }
+        if (!flaskProp.deadPotion)
+        {
+            if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil)
+            {
+                FiveStarReview();
+            }
+            if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil)
+            {
+                FourStarReview();
+            }
+            if (requiredBase == flaskBase && requiredPot < flaskPot)
+            {
+                TwoStarReview1();
+            }
+            if (requiredBase == flaskBase && requiredPot > flaskPot)
+            {
+                TwoStarReview2();
+            }
+            else if (requiredBase != flaskBase)
+            {
+                IncorrectPotion();
+            }
+        }
+        else
+        {
+            DeadPotion();
+        }
+        var endCheck = this.GetComponent<recipeGiver>();
+        if (endCheck.crashControl < 4)
+        {
+            endCheck.crashControl++;
+            this.GetComponent<recipeGiver>().ChoosingRecipe();
+            flask.transform.position = teleporter.transform.position;
+        }
+        this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
+        reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
+        movingReview.MovingUpDown();
+        flaskBase = 0;
+        flaskPot = 0;
+        flaskSigil = 0;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other == flask.GetComponent<Collider>() && !orderDelay)
         {
-            orderDelay = true;
-            DeFactoProperties();
-            var curRequest = this.GetComponent<recipeGiver>();
-            var corOrder = flask.GetComponent<flaskState>();
-            flask.GetComponent<flaskState>().SettingProperties();
-            resettingCauldron.SettingUp();
-            _audioSource.Play();
-            switch (curRequest.potionType)
-            {
-                case "Love":
-                    potionName = "LovePotion";
-                    break;
-
-                case "Soothe":
-                    potionName = "SoothePotion";
-                    break;
-
-                case "Energy":
-                    potionName = "EnergyPotion";
-                    break;
-            }
-            if (!flaskProp.deadPotion)
-            {
-                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil == flaskSigil)
-                {
-                    FiveStarReview();
-                }
-                if (requiredBase == flaskBase && requiredPot == flaskPot && requiredSigil != flaskSigil)
-                {
-                    FourStarReview();
-                }
-                if (requiredBase == flaskBase && requiredPot < flaskPot)
-                {
-                    TwoStarReview1();
-                }
-                if (requiredBase == flaskBase && requiredPot > flaskPot)
-                {
-                    TwoStarReview2();
-                }
-                else if (requiredBase != flaskBase)
-                {
-                    IncorrectPotion();
-                }
-            }
-            else
-            {
-                DeadPotion();
-            }
-            var endCheck = this.GetComponent<recipeGiver>();
-            if (endCheck.crashControl < 4)
-            {
-                endCheck.crashControl++;
-                this.GetComponent<recipeGiver>().ChoosingRecipe();
-                flask.transform.position = teleporter.transform.position;
-            }
-            this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
-            // [NOTE] There MAY be a small delay where the player can see the next request before it disappears, can probably be fixed with some rearrangement
-            reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
-            movingReview.MovingUpDown();
-            flaskBase = 0;
-            flaskPot = 0;
-            flaskSigil = 0;
+            HandingInFlask();
         }
     }
 
