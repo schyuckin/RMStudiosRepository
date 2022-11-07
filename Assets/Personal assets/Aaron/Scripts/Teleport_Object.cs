@@ -11,12 +11,20 @@ public class Teleport_Object : MonoBehaviour
     [SerializeField] private List<Transform> objectOrigins = new List<Transform>();
     //This layer will teleport the object to the origin
 
+    
+
+    private void Start()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         switch (other.name)
         {
             case "Red stuff":
                 other.transform.position = objectOrigins[0].transform.position;
+
                 break;
             case "Yellow stuff":
                 other.transform.position = objectOrigins[1].transform.position;
@@ -28,6 +36,8 @@ public class Teleport_Object : MonoBehaviour
                 other.transform.position = objectOrigins[3].transform.position;
                 break;
         }
+        Rigidbody rb1 = other.GetComponent<Rigidbody>();
+        rb1.velocity = new Vector3(0, 0, 0);
     }
 
 
