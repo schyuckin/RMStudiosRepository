@@ -20,6 +20,7 @@ public class SigilEnable : MonoBehaviour
 
     public ParticleSystem[] aura_purple = new ParticleSystem[5];
 
+    [Space] private AudioSource _audioSource;
     public void Start() 
     {
         //PAUSE ALL PARTICLES IN THE BEGINNING SO THEY WON'T SHOW UP IN THE GAME
@@ -29,6 +30,7 @@ public class SigilEnable : MonoBehaviour
         Debug.Log("They paused");
         particleEnabled = false;
 
+        _audioSource = GetComponent<AudioSource>();
         CauldronEffects();
     }
 
@@ -93,10 +95,10 @@ public class SigilEnable : MonoBehaviour
                     particleEnabled = true;
                 }
                 }
-
+                _audioSource.Play();
                 sigilTouched = sigTouched;
             }
-
+        
             if (other.gameObject.tag == "Cauldron")
             {
                 if (!isEnchanted)

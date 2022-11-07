@@ -35,8 +35,11 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private flaskState flaskProp;
     [SerializeField] private moveReview movingReview;
     [SerializeField] private cauldronController resettingCauldron;
+
+    [Space] private AudioSource _audioSource;
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         reviewStars.SetFloat("_ProgressBorder", -1); // Resetting the material back to normal
     }
 
@@ -84,7 +87,7 @@ public class recipeChecker : MonoBehaviour
             var corOrder = flask.GetComponent<flaskState>();
             flask.GetComponent<flaskState>().SettingProperties();
             resettingCauldron.SettingUp();
-
+            _audioSource.Play();
             switch (curRequest.potionType)
             {
                 case "Love":

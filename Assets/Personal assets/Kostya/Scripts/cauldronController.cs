@@ -32,10 +32,14 @@ public class cauldronController : MonoBehaviour
     [SerializeField] private bool ingredientDelay = false;
     [SerializeField] private float timeDelay = 0.2f;
 
+    [Space] private AudioSource _audioSource;
+
+    public AudioClip splash;
+
+    public AudioClip fill;
     // Start is called before the first frame update
     void Start()
     {
-
         SettingUp();
     }
 
@@ -49,6 +53,7 @@ public class cauldronController : MonoBehaviour
         cauldronPotency = 0;
         currentStateName = null;
         dead = false;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void DropDelay()
@@ -183,16 +188,20 @@ public class cauldronController : MonoBehaviour
             ingredientDelay = true;
             ingredientAmount++;
             currentFill = fillBar.fillAmount;
+            _audioSource.clip = splash;
+            _audioSource.Play();
             BarFilling();
             PotencyUpdate();
             ColourUpdate();
         }
         if (other.tag == "flask")
         {
+            _audioSource.Play();
             if (dead)
             {
                 flaskPassing.deadPotion = true;
             }
+            _audioSource.clip = fill;
             flaskPassing.RetrievingInfo();
         }
     }
