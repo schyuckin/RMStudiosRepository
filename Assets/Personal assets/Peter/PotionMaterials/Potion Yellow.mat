@@ -53,7 +53,7 @@ Material:
     - _TopFresnelPower: 0.5
     - _WobbleX: 0
     - _WobbleZ: 0
-    - _fillAmount: 0.72
+    - _fillAmount: 0.56
     m_Colors:
     - _FresnelColor: {r: 2.0000868, g: 2.297397, b: 0, a: 0}
     - _SideColor: {r: 1.5226101, g: 1.7411011, b: 0, a: 1}

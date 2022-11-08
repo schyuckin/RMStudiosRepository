@@ -21,6 +21,9 @@ public class SigilEnable : MonoBehaviour
     public ParticleSystem[] aura_purple = new ParticleSystem[5];
 
     [Space] private AudioSource _audioSource;
+    public AudioSource sigilSoundsObj;
+    public AudioClip[] sigilSoundsAudioClips;
+    
     public void Start() 
     {
         //PAUSE ALL PARTICLES IN THE BEGINNING SO THEY WON'T SHOW UP IN THE GAME
@@ -75,6 +78,8 @@ public class SigilEnable : MonoBehaviour
                 if (particleEnabled == false)
                 {
                     differentParticles[0].Play();
+                    sigilSoundsObj.clip = sigilSoundsAudioClips[0];
+                    sigilSoundsObj.Play();
                     sigTouched = 1;
                     particleEnabled = true;
                 }
@@ -85,6 +90,8 @@ public class SigilEnable : MonoBehaviour
                 if (particleEnabled == false)
                 {
                     differentParticles[1].Play();
+                    sigilSoundsObj.clip = sigilSoundsAudioClips[1];
+                    sigilSoundsObj.Play();
                     sigTouched = 2;
                     particleEnabled = true;
                 }
@@ -94,6 +101,8 @@ public class SigilEnable : MonoBehaviour
                 if (particleEnabled == false)
                 {
                     differentParticles[2].Play();
+                    sigilSoundsObj.clip = sigilSoundsAudioClips[2];
+                    sigilSoundsObj.Play();
                     sigTouched = 3;
                     particleEnabled = true;
                 }

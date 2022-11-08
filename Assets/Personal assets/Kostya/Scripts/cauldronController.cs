@@ -37,6 +37,11 @@ public class cauldronController : MonoBehaviour
     public AudioClip splash;
 
     public AudioClip fill;
+
+
+    public AudioSource sigilSoundObj;
+
+    public AudioClip[] sigilSoundAudioClips;
     // Start is called before the first frame update
     void Start()
     {
