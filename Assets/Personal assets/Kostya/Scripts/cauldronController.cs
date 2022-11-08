@@ -52,10 +52,9 @@ public class cauldronController : MonoBehaviour
         currentState = 0;
         cauldronPotency = 0;
         cauldronSigil = 0;
-        for (var i = 0; i < 2; i++)
-        {
-            coloursInside[i] = false;
-        }
+        coloursInside[0] = false;
+        coloursInside[1] = false;
+        coloursInside[2] = false;
         currentStateName = null;
         dead = false;
         _audioSource = GetComponent<AudioSource>();

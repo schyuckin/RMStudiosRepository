@@ -49,6 +49,7 @@ public class SigilEnable : MonoBehaviour
         cauldronEffects[2].GetComponentInChildren<Light>().enabled = false;
         sigTouched = 0;
         sigilTouched = sigTouched;
+        caulControl.cauldronSigil = 0;
     }
     
 
