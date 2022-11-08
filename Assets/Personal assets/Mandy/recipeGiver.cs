@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class recipeGiver : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class recipeGiver : MonoBehaviour
     [SerializeField] private GameObject descriptionShownText; // Display of the current request in the overworld
     [SerializeField] private GameObject descriptionShown; // More stuff Don't ask
     [SerializeField] private GameObject nameShown; // Name of the person whose request is being processed
-    [HideInInspector] public int crashControl = 0;
+    public int crashControl = 0;
 
     [Space]
 
@@ -30,10 +31,11 @@ public class recipeGiver : MonoBehaviour
     public void ChoosingRecipe()
     {
         // Chooses a random recipe and displays it in the overworld
-        while (customerRequests[descriptionChosen] == "null")
+        while (customerRequests[descriptionChosen] == "null" && crashControl < customerRequests.Count)
         {
             descriptionChosen = Random.Range(0, customerRequests.Count);
         }
+        crashControl++;
         requestChosen = customerRequests[descriptionChosen];
         descriptionShownText.GetComponent<TextMeshPro>().text = requestChosen;
         nameShown.GetComponent<TextMeshPro>().text = customerNames[descriptionChosen];
@@ -82,7 +84,7 @@ public class recipeGiver : MonoBehaviour
                 potionBase = 6;
                 potionPotency = 1;
                 potionSigil = 1;
-                potionType = potionTypes[0];
+                potionType = potionTypes[1];
                 break;
 
             // Loud neighbour
@@ -143,6 +145,11 @@ public class recipeGiver : MonoBehaviour
         // Removes the last request so that it cannot be chosen again
         // customerRequests.Remove(customerRequests[descriptionChosen]);
         customerRequests[descriptionChosen] = "null";
+
+        if (crashControl >= customerRequests.Count)
+        {
+            NukeScene();
+        }
     }
     void Start()
     {
@@ -156,6 +163,11 @@ public class recipeGiver : MonoBehaviour
         descriptionShown.SetActive(false);
     }
 
+    public void NukeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     // Triggering recipes from the Inspector
     private void Update()
     {
@@ -163,10 +175,13 @@ public class recipeGiver : MonoBehaviour
         {
             manualActivation = false;
             // [NOTE] This is needed for preventing what seems to be either an infinite loop or a stack overflow
-            if (crashControl < customerRequests.Count - 1)
+            if (crashControl < customerRequests.Count)
             {
-                crashControl++;
                 this.GetComponent<recipeGiver>().ChoosingRecipe();
+            }
+            else
+            {
+                NukeScene();
             }
         }
     }
