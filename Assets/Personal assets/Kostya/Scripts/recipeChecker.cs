@@ -9,6 +9,7 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private GameObject flask;
     [SerializeField] private GameObject teleporter;
     [SerializeField] public Material reviewStars;
+    [SerializeField] private ParticleSystem poof;
 
     private int requiredBase;
     private int requiredPot; // Desired properties for the currently chosen potion recipe
@@ -34,7 +35,6 @@ public class recipeChecker : MonoBehaviour
     [SerializeField] private moveReview movingReview;
     [SerializeField] private cauldronController resettingCauldron;
     [SerializeField] private recipeGiver recipeInfo;
-
     [SerializeField] List<Material> customerPictures = new List<Material>();
 
     [Space]
@@ -133,8 +133,9 @@ public class recipeChecker : MonoBehaviour
         }
 
         this.GetComponent<recipeGiver>().ChoosingRecipe();
+        poof.GetComponent<ParticleSystem>().Play();
         flask.transform.position = teleporter.transform.position;
-       // this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
+        // this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
         reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
         flask.GetComponent<flaskState>().SettingProperties();
         resettingCauldron.SettingUp();
