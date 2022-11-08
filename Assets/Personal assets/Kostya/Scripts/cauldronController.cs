@@ -51,6 +51,7 @@ public class cauldronController : MonoBehaviour
         ingredientAmount = 0;
         currentState = 0;
         cauldronPotency = 0;
+        cauldronSigil = 0;
         currentStateName = null;
         dead = false;
         _audioSource = GetComponent<AudioSource>();

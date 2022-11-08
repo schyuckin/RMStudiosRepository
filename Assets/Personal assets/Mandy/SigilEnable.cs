@@ -47,6 +47,8 @@ public class SigilEnable : MonoBehaviour
         aura_purple[3].Stop();
         aura_purple[4].Stop();
         cauldronEffects[2].GetComponentInChildren<Light>().enabled = false;
+        sigTouched = 0;
+        sigilTouched = sigTouched;
     }
     
 
