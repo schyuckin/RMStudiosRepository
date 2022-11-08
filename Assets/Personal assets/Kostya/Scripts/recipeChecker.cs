@@ -184,10 +184,10 @@ public class recipeChecker : MonoBehaviour
                     reviewSentence = "I was going to write a complaint but I started falling asleep as I was typing it so I guess it worked.";
                     break;
                 case 2:
-                    reviewSentence = "The potion was perfect! Whenever my neighbor is being loud, I just gift him some tea and enjoy the rest of the day!";
+                    reviewSentence = "The potion was perfect! Whenever my neighbor is being loud, I just gift him some tea and enjoy the rest of my day!";
                     break;
                 case 3:
-                    reviewSentence = "Thanks a lot! One cup of tea was just enough. Like my new neighbour way more, too.";
+                    reviewSentence = "It's astonishing how one cup of tea is the difference between life... and coma. Life is ever so fragile...";
                     break;
             }
                     
@@ -198,13 +198,13 @@ public class recipeChecker : MonoBehaviour
             switch (requiredPot)
             {
                 case 1:
-                    reviewSentence = "They announced my promotion halfway through the presentation... Okay, thanks!";
+                    reviewSentence = "They announced my promotion halfway through the presentation... You are great!";
                     break;
                 case 2:
                     reviewSentence = "I WON I WON I WON I WON I WON I WON I WON I WON I WON";
                     break;
                 case 3:
-                    reviewSentence = "I don't know I ended up in Mexico, but it's cool here. I might need another potion to get back though.";
+                    reviewSentence = "I don't know I ended up in Mexico but at least you-know-who is not watching me anymore... Or are they?";
                     break;
             }
         }
@@ -221,7 +221,7 @@ public class recipeChecker : MonoBehaviour
                     reviewSentence = "She does seem interested in me, but she just can't stop talking about lizards whenever we go out... Okay, I guess...";
                     break;
                 case 2:
-                    reviewSentence = "I guess it worked? He has fallen for me, but his head caught on fire! I wanted a spark between us but not like this!";
+                    reviewSentence = "I guess it worked? He has fallen for me, but his head caught on fire which is ... thats not what I meant by a 'spark'";
                     break;
                 case 3:
                     reviewSentence = "Okay, I guess I had it coming when I said 'obsessed', but for some reason he treats me as an Egyptian god?";
@@ -241,7 +241,7 @@ public class recipeChecker : MonoBehaviour
                     reviewSentence = "My neighbor is asleep, which is good. His snoring, however, causes our entire building to shake.";
                     break;
                 case 3:
-                    reviewSentence = "Thank you for helping with my neighbour, but doing that to his wife was unneccessary...";
+                    reviewSentence = "I am grateful for aiding with my neighbour, but I can still see his shadow wherever I go...";
                     break;
             }
         }
@@ -251,13 +251,13 @@ public class recipeChecker : MonoBehaviour
             switch (requiredPot)
             {
                 case 1:
-                    reviewSentence = "It was fine until I started speaking Japanese midway. My boss was impressed, but I need to learn the language now.";
+                    reviewSentence = "It was fine until I started speaking Japanese midway. My boss was impressed, but I have to learn the language now.";
                     break;
                 case 2:
-                    reviewSentence = "When they gave me my victory trophy, I accidentally broke it because my legs could not stop twitching.";
+                    reviewSentence = "WhEeen theyY gav me MY victory TropPhy I broke ITtt becauseEE my bbBody Keeps TWitching";
                     break;
                 case 3:
-                    reviewSentence = "I ran so fast I ended up in North Korea. Luckily, there was still some potion left...";
+                    reviewSentence = "I ran so fast I ended up in North Korea. Maybe Uncle Sam is not so bad after all. Thank goodness there was still some potion left...";
                     break;
             }
         }
@@ -292,7 +292,7 @@ public class recipeChecker : MonoBehaviour
             switch (flaskPot)
             {
                 case 2:
-                    reviewSentence = "My son had trouble issues falling asleep and he's not waking up for the third day. If this continues, I will report to the authorities.";
+                    reviewSentence = "My son had trouble issues falling asleep and he's not waking up for the third day after your potion. If this continues, I will report to the authorities.";
                     break;
                 case 3:
                     switch (requiredPot)
@@ -301,7 +301,7 @@ public class recipeChecker : MonoBehaviour
                             reviewSentence = "My son hasn't woken up in two weeks, what did you give him?";
                             break;
                         case 2:
-                            reviewSentence = "I didn't mean it like that! I only wanted him to sleep! Jesus Christ, who hired you?";
+                            reviewSentence = "Oh golly! I only wanted him to sleep! Sweet Zeus, who hired you?";
                             break;
                     }
                     break;
@@ -313,16 +313,16 @@ public class recipeChecker : MonoBehaviour
             switch (flaskPot)
             {
                 case 2:
-                    reviewSentence = "I could not stop screaming so the meeting members had to use earplugs. I apologised, but it was awkward.";
+                    reviewSentence = "I could not stop SCREAMING so the meeting members had to use EARPLUGS. I apologised, but it was REALLY awkward.";
                     break;
                 case 3:
                     switch (requiredPot)
                     {
                         case 1:
-                            reviewSentence = "They postponed the meeting for two days and told me to seek professional help... Your store has a reputation now.";
+                            reviewSentence = "They postponed the meeting for two days and told me to seek PROFESSIONAL HELP!!! Your store has a reputation now. AND ME TOO!!";
                             break;
                         case 2:
-                            reviewSentence = "I got disqualified because I ran the entire race two times while they were preparing for it.";
+                            reviewSentence = "i gt disqualfiied because i ran th enntire race two times whole they were preparriing forr it";
                             break;
                     }
                     break;
@@ -344,10 +344,10 @@ public class recipeChecker : MonoBehaviour
                     switch (requiredPot)
                     {
                         case 2:
-                            reviewSentence = "Ugh, she's not much better! I still have to woo her!";
+                            reviewSentence = "Ugh, he's not much better! I still have to woo him!";
                             break;
                         case 3:
-                            reviewSentence = "They said they want to take it slow... Who even says that? I don't have much time!";
+                            reviewSentence = "He said he wanted to take it slow!! Do I LOOK LIKE I'm interested in that?";
                             break;
                     }
                     break;
@@ -368,15 +368,15 @@ public class recipeChecker : MonoBehaviour
                     switch (requiredPot)
                     {
                         case 2:
-                            reviewSentence = "He is not quiet, he is just annoying now! Acts weird, too.";
+                            reviewSentence = "He is not quiet, he is just annoying now! He acts weird as well...";
                             break;
                         case 3:
-                            reviewSentence = "Soooooo.....Does this just work slowly or should I use the second portion orrrrr....?";
+                            reviewSentence = "Life has once again subjected me to the curse of suffering... The potion is weak, but I have to stay strong...";
                             break;
                     }
                     break;
                 case 2:
-                    reviewSentence = "It was awkward to see them in the hallway after I sent condolences to their family... Do you really not get the slang?";
+                    reviewSentence = "At this point I may be the one closer to death than he is... It seems that I was, once again, gravely misunderstood.";
                     break;
             }
         }
@@ -392,10 +392,10 @@ public class recipeChecker : MonoBehaviour
                     switch (requiredPot)
                     {
                         case 2:
-                            reviewSentence = "Still got beat by a little kid... I gotta know where he gets his potions.";
+                            reviewSentence = "Still got beat by a little kid... I gotta know where he gets his potions";
                             break;
                         case 3:
-                            reviewSentence = "Made it out of the city and that's it. Now I also have to pay for the bus back.";
+                            reviewSentence = "Made it out of the city and that's it. Now I also have to find something to get me back.";
                             break;
                     }
                     break;
@@ -409,13 +409,71 @@ public class recipeChecker : MonoBehaviour
     }
     void IncorrectPotion()
     {
-        reviewSentence = "This is not what I ordered at all! This sucks!";
+        switch (recipeInfo.customerNames[recipeInfo.descriptionChosen])
+        {
+            case "Vincent Edgecombe":
+                reviewSentence = "I can cook something like that myself, too!";
+                break;
+            case "Gellert Friedrich":
+                reviewSentence = "Never ordering from here again lol";
+                break;
+            case "Sybil Silvertooth":
+                reviewSentence = "I never needed a man anyway. This still sucks though!";
+                break;
+            case "w1lhelmGBS":
+                reviewSentence = "i hope there is a mosquito who comes into your room at 3 AM and flies around your head";
+                break;
+            case "Granny Weatherwax":
+                reviewSentence = "Back in my days we knew how to cook potions when we were two. Disappointing.";
+                break;
+            case "_AmorphicDesolation_":
+                reviewSentence = "Just like with everything else in my life, I am left with immeasurable disappointment. This world is a cruel and lonely place and we all die alone";
+                break;
+            case "Korina Swivel":
+                reviewSentence = "I will never trust a potion shop with something so important again.";
+                break;
+            case "every1wandsme":
+                reviewSentence = "I don't even need your potions!!!!! I'm a winner at HEART";
+                break;
+            case "Abery Crabaham":
+                reviewSentence = "So they were watching me through you... You cannot stop me anyway....";
+                break;
+        }
         reviewStars.SetFloat("_ProgressBorder", -1);
     }
 
     void DeadPotion()
     {
-        reviewSentence = "WHAT THE HELL DID YOU DO???";
+        switch (recipeInfo.customerNames[recipeInfo.descriptionChosen])
+        {
+            case "Vincent Edgecombe":
+                reviewSentence = "I will report you to the magic authorities. You filthy murderer!";
+                break;
+            case "Gellert Friedrich":
+                reviewSentence = "Thank god he was not in the office that day... You absolute monster";
+                break;
+            case "Sybil Silvertooth":
+                reviewSentence = "I never needed a man anyway. This still sucks though!";
+                break;
+            case "w1lhelmGBS":
+                reviewSentence = "Hello, this is Wilhelm's mom. Do you know when he will wake up?";
+                break;
+            case "Granny Weatherwax":
+                reviewSentence = "oh no granny died.........anyways inheritance money is cool (c) Uma & Truman, her grandchildren";
+                break;
+            case "_AmorphicDesolation_":
+                reviewSentence = "Everything around me has died, but I feel nothing at this loss of meaningful life.";
+                break;
+            case "Korina Swivel":
+                reviewSentence = "I have to find a new job because everyone is @&*@@#(*@( DEAD!!!!!!!!!!!";
+                break;
+            case "every1wandsme":
+                reviewSentence = "Well, that's one way to take care of the competition. There are no more organizers either tho";
+                break;
+            case "Abery Crabaham":
+                reviewSentence = "They wanna prosecute me, an innocent man, for murder! Did you snitch??!!";
+                break;
+        }
         reviewStars.SetFloat("_ProgressBorder", -1);
     }
 
