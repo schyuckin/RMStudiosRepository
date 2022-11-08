@@ -45,7 +45,7 @@ public class cauldronController : MonoBehaviour
 
     public void SettingUp() // Default ingredient setting
     {
-        waterBody.GetComponent<MeshRenderer>().material = baseColours[currentState];
+        waterBody.GetComponent<MeshRenderer>().material = baseColours[0];
         fillBar.fillAmount = 0;
         currentFill = fillBar.fillAmount;
         ingredientAmount = 0;

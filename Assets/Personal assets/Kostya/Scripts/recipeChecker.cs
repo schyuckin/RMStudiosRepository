@@ -87,11 +87,8 @@ public class recipeChecker : MonoBehaviour
         orderDelay = true;
         DeFactoProperties();
         var curRequest = this.GetComponent<recipeGiver>();
-        var corOrder = flask.GetComponent<flaskState>();
-        flask.GetComponent<flaskState>().SettingProperties();
         currentCustomerName.text = recipeInfo.customerNames[recipeInfo.descriptionChosen];
         currentCustomerPicture.GetComponent<MeshRenderer>().material = customerPictures[recipeInfo.descriptionChosen];
-        resettingCauldron.SettingUp();
         _audioSource.Play();
         switch (curRequest.potionType)
         {
@@ -134,15 +131,13 @@ public class recipeChecker : MonoBehaviour
         {
             DeadPotion();
         }
-        var endCheck = this.GetComponent<recipeGiver>();
-        if (endCheck.crashControl < 4)
-        {
-            endCheck.crashControl++;
-            this.GetComponent<recipeGiver>().ChoosingRecipe();
-            flask.transform.position = teleporter.transform.position;
-        }
+
+        this.GetComponent<recipeGiver>().ChoosingRecipe();
+        flask.transform.position = teleporter.transform.position;
         this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
         reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
+        flask.GetComponent<flaskState>().SettingProperties();
+        resettingCauldron.SettingUp();
         movingReview.MovingUpDown();
         flaskBase = 0;
         flaskPot = 0;
