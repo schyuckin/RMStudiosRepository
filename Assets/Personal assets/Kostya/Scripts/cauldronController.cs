@@ -85,6 +85,10 @@ public class cauldronController : MonoBehaviour
         {
             fillBar.fillAmount += (float)0.01;
         }
+        if (dead)
+        {
+            fillBar.fillAmount += (float)0.01;
+        }
     }
 
     void Update()
