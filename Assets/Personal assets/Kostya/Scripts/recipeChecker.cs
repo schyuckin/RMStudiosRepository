@@ -134,7 +134,7 @@ public class recipeChecker : MonoBehaviour
 
         this.GetComponent<recipeGiver>().ChoosingRecipe();
         flask.transform.position = teleporter.transform.position;
-        this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
+       // this.GetComponent<recipeGiver>().disablingRequest(); // Hiding the request in favour of review
         reviewDisplayText.GetComponent<TextMeshPro>().text = reviewSentence;
         flask.GetComponent<flaskState>().SettingProperties();
         resettingCauldron.SettingUp();

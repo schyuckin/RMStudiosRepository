@@ -30,7 +30,7 @@ public class moveReview : MonoBehaviour
         if (((other.tag != "flask") || (other.tag != "baseElement")) && (!touchDelay))
         {
             touchDelay = true;
-            currentRequest.SetActive(true);
+            // currentRequest.SetActive(true);
             MovingUpDown();
         }
     }
