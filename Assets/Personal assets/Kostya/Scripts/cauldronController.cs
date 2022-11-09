@@ -86,7 +86,7 @@ public class cauldronController : MonoBehaviour
 
     private void BarFilling()
     {
-        if (fillBar.fillAmount < currentFill + (float)0.05 * ingredientAmount)
+        if (fillBar.fillAmount < currentFill + (float)0.05 * 1)
         {
             fillBar.fillAmount += (float)0.01;
         }
@@ -100,6 +100,7 @@ public class cauldronController : MonoBehaviour
     {
         BarFilling();
         DropDelay();
+        PotencyUpdate();
     }
 
     private void ColourUpdate() // [NOTE] THE ORDER IS RED, BLUE, YELLOW
@@ -152,15 +153,15 @@ public class cauldronController : MonoBehaviour
 
     private void PotencyUpdate()
     {
-        if (ingredientAmount >=1 && ingredientAmount <= 7) // Weak potion
+        if (ingredientAmount >=1 && ingredientAmount <= 5) // Weak potion
         {
             cauldronPotency = 1;
         }
-        if (ingredientAmount >= 8 && ingredientAmount <= 13) // Mild potion
+        if (ingredientAmount >= 6 && ingredientAmount <= 12) // Mild potion
         {
             cauldronPotency = 2;
         }
-        if (ingredientAmount >= 14 && ingredientAmount <= 19) // Strong potion
+        if (ingredientAmount >= 13 && ingredientAmount <= 19) // Strong potion
         {
             cauldronPotency = 3;
         }
